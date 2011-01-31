@@ -1,5 +1,7 @@
 package org.magiccat.service;
 
+import org.magiccat.domain.Article;
+
 /**
  * Created by IntelliJ IDEA.
  * User: cleverpig
@@ -8,4 +10,5 @@ package org.magiccat.service;
  * To change this template use File | Settings | File Templates.
  */
 public interface ArticleService {
+  public void saveNewArticle(Article article);
 }

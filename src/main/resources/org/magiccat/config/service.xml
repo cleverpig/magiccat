@@ -2,8 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-  <import resource="datasource.xml"/>
-  <import resource="dao.xml"/>
-  <import resource="service.xml"/>
-  <import resource="tx.xml"/>
+  <bean id="articleService" class="org.magiccat.service.impl.ArticleServiceImpl">
+    <property name="articleDAO" ref="articleDAO"/>
+  </bean>
 </beans>

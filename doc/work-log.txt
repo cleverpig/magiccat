@@ -1,2 +1,4 @@
 2011-01-31
 create project structure and config pom.xml
+config applcationContext & hibernate;build magiccat mysql database,Article domain,and related DAO classes.
+add ArticleService implement;config spring transaction;add admin/article/index.xhtml,and backingbean which using ArticleService.

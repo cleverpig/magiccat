@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<f:loadBundle var="msg" basename="org.magiccat.resourceBundle.Article"/>
+<head>
+  <title></title>
+  <ice:outputStyle href="/xmlhttp/css/rime/rime.css"></ice:outputStyle>
+</head>
+<body>
+  <f:view>
+
+    <ice:panelGrid id="queryGrid" rendered="#{articleBean.showQuery}">
+      <ice:form  id="queryForm" partialSubmit="true">
+        this is queryGrid
+      </ice:form>
+    </ice:panelGrid>
+
+    <ice:form id="editForm" partialSubmit="true">
+      <ice:inputHidden id="author" value="#{articleBean.article.author}"/>
+      <ice:panelGrid id="editGrid" columns="1" rendered="#{articleBean.showEditor}">
+        <ice:panelGrid columns="3">
+          <h:outputLabel value="#{msg.title}" for="title"/>
+          <ice:inputText id="title" value="#{articleBean.article.title}"
+                         maxlength="50" size="20" required="true">
+            <f:validateLength minimum="1" maximum="50"/>
+          </ice:inputText>
+          <ice:message for="title"/>
+          <ice:outputLabel for="content" value="#{msg.content}"/>
+          <ice:inputTextarea id="content" value="#{articleBean.article.content}"
+                             cols="30" rows="20" required="true">
+            <f:validateLength minimum="1" maximum="5000"/>
+          </ice:inputTextarea>
+        </ice:panelGrid>
+        <ice:panelGrid columns="1">
+          <ice:commandButton value="#{msg.submit}" actionListener="#{articleBean.saveActionListener}"/>
+        </ice:panelGrid>
+      </ice:panelGrid>
+    </ice:form>
+
+  </f:view>
+</body>
+</html>

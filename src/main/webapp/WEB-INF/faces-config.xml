@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+	<application>
+		<view-handler>com.icesoft.faces.facelets.D2DFaceletViewHandler</view-handler>
+		<variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
+    <locale-config>
+      <default-locale>zh</default-locale>
+      <supported-locale>zh</supported-locale>
+      <supported-locale>en</supported-locale>
+    </locale-config>
+    <message-bundle>org.magiccat.resourceBundle.Messages</message-bundle>
+    <!--<resource-bundle>-->
+      <!--<base-name>org.magiccat.resourceBundle.Messages</base-name>-->
+      <!--<var>messages</var>-->
+    <!--</resource-bundle>-->
+	</application>
+
+  <!-- backingBean直接可以调用spring IoC的Bean -->
+  <managed-bean>
+    <managed-bean-name>articleBean</managed-bean-name>
+    <managed-bean-class>org.magiccat.backingbean.ArticleBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>articleService</property-name>
+      <value>#{articleService}</value>
+    </managed-property>
+    <managed-property>
+      <property-name>showEditor</property-name>
+      <value>true</value>
+    </managed-property>
+    <managed-property>
+      <property-name>showQuery</property-name>
+      <value>false</value>
+    </managed-property>
+  </managed-bean>
+</faces-config>
