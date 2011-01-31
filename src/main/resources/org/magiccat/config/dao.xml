@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"></property>
+    <property name="configLocation" value="classpath:org/magiccat/config/hibernate.cfg.xml"/>
+    <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+  </bean>
+
+  <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+  <bean id="baseDAO" class="org.magiccat.dao.impl.AbstractHibernateBaseDAOImpl" abstract="true">
+    <property name="hibernateTemplate" ref="hibernateTemplate"/>
+  </bean>
+
+  <bean id="articleDAO" class="org.magiccat.dao.impl.ArticleDAOImpl" parent="baseDAO">
+  </bean>
+</beans>
