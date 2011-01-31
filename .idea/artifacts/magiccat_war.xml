@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="magiccat:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="magiccat.war">
+      <element id="artifact" artifact-name="magiccat:war exploded" />
+    </root>
+  </artifact>
+</component>
