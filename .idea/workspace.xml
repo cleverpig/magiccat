@@ -67,57 +67,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/config/applicationContext.xml">
+      <file leaf-file-name="DicServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/impl/DicServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="29" selection-start="426" selection-end="426" vertical-scroll-proportion="-2.2826087">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="faces-config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml">
-          <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="56" selection-start="716" selection-end="716" vertical-scroll-proportion="-10.714286">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.xhtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/article/index.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="74" selection-start="933" selection-end="933" vertical-scroll-proportion="-7.576923">
+            <state line="18" column="29" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArticleBean.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/backingbean/ArticleBean.java">
+      <file leaf-file-name="service.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/config/service.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="0" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tx.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/config/tx.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="97" selection-start="1659" selection-end="1659" vertical-scroll-proportion="-6.0869565">
+            <state line="8" column="66" selection-start="503" selection-end="503" vertical-scroll-proportion="-2.6086957">
               <folding />
             </state>
           </provider>
@@ -129,7 +91,16 @@
       <file leaf-file-name="work-log.txt" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/doc/work-log.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="162" selection-end="290" vertical-scroll-proportion="0.12569833">
+            <state line="6" column="0" selection-start="303" selection-end="359" vertical-scroll-proportion="0.13657056">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DicService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/DicService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="17" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -139,35 +110,6 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/impl/ArticleServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="15" column="13" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArticleService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/ArticleService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="14" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Messages_zh.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/resourceBundle/Messages_zh.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="39" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Article.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/domain/Article.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="356" selection-end="356" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -187,21 +129,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/service/ArticleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/service/impl/ArticleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/dao/AbstractHibernateBaseDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/dao/impl/EntityNotFoundException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/dao/impl/BadParameterException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/domain/Dic.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/org/magiccat/config/dao.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/org/magiccat/test/Constants.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/magiccat/test/TestConstants.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/magiccat/dao/impl/ArticleDAOImplTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/magiccat/dao/impl/DicDAOTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/org/magiccat/config/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/dao/impl/DicDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/dao/impl/AbstractHibernateBaseDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/dao/DicDAO.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/magiccat/config/service.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/backingbean/ArticleBackingBean.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/backingbean/messages_zh.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/org/magiccat/messages/article_zh.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/org/magiccat/messages/messages_zh.properties" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/org/magiccat/resourceBundle/Messages_zh.properties" />
-        <option value="$PROJECT_DIR$/src/main/webapp/admin/article/index.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/backingbean/ArticleBean.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/org/magiccat/config/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/org/magiccat/config/tx.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/magiccat/service/impl/DicServiceImpl.java" />
         <option value="$PROJECT_DIR$/doc/work-log.txt" />
       </list>
     </option>
@@ -275,6 +217,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -331,11 +274,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="magiccat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -354,44 +301,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magiccat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magiccat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="article" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -737,7 +646,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -762,10 +670,11 @@
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="org.magiccat.service" />
       <recent name="org.magiccat.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.run on tomcat">
+  <component name="RunManager" selected="JUnit.DicDAOTest">
     <configuration default="false" name="ArticleDAOImplTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -783,6 +692,34 @@
       <option name="VM_PARAMETERS" value="" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DicDAOTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false">
+        <pattern>
+          <option name="PATTERN" value="org.magiccat.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="magiccat" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.magiccat.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.magiccat.dao.impl.DicDAOTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -1053,13 +990,16 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="JUnit.ArticleDAOImplTest" />
       <item index="1" class="java.lang.String" itemvalue="Maven.maven test" />
       <item index="2" class="java.lang.String" itemvalue="Maven.run on tomcat" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DicDAOTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1118,8 +1058,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494577" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24910007" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40285715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1129,14 +1068,15 @@
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.6710145" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5971429" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.47714287" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24838012" sideWeight="0.5971429" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52340424" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24838012" sideWeight="0.47714287" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5228571" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289855" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1176,138 +1116,88 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/resourceBundle/Article_zh.properties">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/magiccat/dao/impl/DicDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="15" column="101" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/icefaces/icefaces-comps/1.8.2/icefaces-comps-1.8.2.jar!/com/icesoft/faces/resources/messages.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/config/hibernate.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1745" selection-end="4434" vertical-scroll-proportion="-0.5350877">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/faces/jsf-impl/1.2-b19/jsf-impl-1.2-b19.jar!/javax/faces/Messages.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="65" selection-start="1853" selection-end="16962" vertical-scroll-proportion="0.9122807">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/faces/jsf-impl/1.2-b19/jsf-impl-1.2-b19.jar!/javax/faces/Messages_en.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="0" selection-start="864" selection-end="16962" vertical-scroll-proportion="-47.891304">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="2108" selection-end="2293" vertical-scroll-proportion="-4.6190476">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml">
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="56" selection-start="716" selection-end="716" vertical-scroll-proportion="-10.714286">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/resourceBundle/Messages_zh.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="39" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="4" selection-start="18" selection-end="30" vertical-scroll-proportion="0.08695652">
-          <folding />
-        </state>
+        <state line="11" column="48" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/domain/Article.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="356" selection-end="356" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="14" column="25" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/article/index.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/domain/Dic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="74" selection-start="933" selection-end="933" vertical-scroll-proportion="-7.576923">
-          <folding />
-        </state>
+        <state line="12" column="13" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/backingbean/ArticleBean.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/magiccat/dao/impl/ArticleDAOImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="22" column="9" selection-start="636" selection-end="636" vertical-scroll-proportion="0.49107143" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/impl/ArticleServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/dao/AbstractHibernateBaseDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="26" column="16" selection-start="560" selection-end="560" vertical-scroll-proportion="0.55803573" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/ArticleService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/dao/impl/AbstractHibernateBaseDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="14" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="69" column="61" selection-start="2044" selection-end="2044" vertical-scroll-proportion="0.17113096" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/config/applicationContext.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/dao/impl/DicDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="29" selection-start="426" selection-end="426" vertical-scroll-proportion="-2.2826087">
-          <folding />
-        </state>
+        <state line="48" column="46" selection-start="1752" selection-end="1752" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/config/tx.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
       <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/config/tx.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/dao/ArticleDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="97" selection-start="1659" selection-end="1659" vertical-scroll-proportion="-6.0869565">
+        <state line="13" column="60" selection-start="278" selection-end="302" vertical-scroll-proportion="0.24553572" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/dao/DicDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="69" selection-start="306" selection-end="306" vertical-scroll-proportion="0.25267994" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/impl/ArticleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/DicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="17" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/magiccat/service/impl/DicServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="29" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/magiccat/config/service.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="66" selection-start="503" selection-end="503" vertical-scroll-proportion="-2.6086957">
           <folding />
         </state>
       </provider>
@@ -1317,7 +1207,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/doc/work-log.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="162" selection-end="290" vertical-scroll-proportion="0.12569833">
+        <state line="6" column="0" selection-start="303" selection-end="359" vertical-scroll-proportion="0.13657056">
           <folding />
         </state>
       </provider>

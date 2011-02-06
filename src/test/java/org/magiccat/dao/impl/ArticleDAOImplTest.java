@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import org.magiccat.dao.ArticleDAO;
 import org.magiccat.domain.Article;
 import org.magiccat.test.AbstractBaseTestCase;
-
+import static org.magiccat.test.TestConstants.*;
 /**
  * Created by IntelliJ IDEA.
  * User: cleverpig
@@ -16,7 +16,7 @@ import org.magiccat.test.AbstractBaseTestCase;
 public class ArticleDAOImplTest extends AbstractBaseTestCase<ArticleDAO> {
 
   public ArticleDAOImplTest() {
-    super("articleDAO","org/magiccat/config/applicationContext.xml");
+    super("articleDAO",TEST_APPLICATION_CONTEXT_PATH);
   }
 
   public void testSave() throws Exception {

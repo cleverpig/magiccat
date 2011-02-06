@@ -5,4 +5,8 @@
   <bean id="articleService" class="org.magiccat.service.impl.ArticleServiceImpl">
     <property name="articleDAO" ref="articleDAO"/>
   </bean>
+
+  <bean id="dicService" class="org.magiccat.service.impl.DicServiceImpl">
+    <property name="dicDAO" ref="dicDAO"/>
+  </bean>
 </beans>

@@ -20,7 +20,7 @@ import java.util.List;
 public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
     extends HibernateDaoSupport implements AbstractHibernateBaseDAO<T,ID> {
   private Class<T> entityClazz;
-  private static final String ENTITY_ALIAS="e";
+  protected static final String ENTITY_ALIAS="e";
   private Log log= LogFactory.getLog(AbstractHibernateBaseDAOImpl.class);
 
   public AbstractHibernateBaseDAOImpl() {
@@ -43,12 +43,18 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
     getHibernateTemplate().delete(entity);
   }
 
-  private void appendOrderSQL(
+  protected void appendOrderSQL(
       StringBuffer hsql,
+      final String entityAlias,
       final String orderField,
       final boolean orderByAsc){
     if (StringUtils.isEmpty(orderField)==false){
-      hsql.append(" ORDER BY "+orderField);
+      if (hsql.indexOf("ORDER BY")<0)
+          hsql.append(" ORDER BY ");
+      else
+          hsql.append(",");
+
+      hsql.append(entityAlias+"."+orderField);
       if (orderByAsc==false){
         hsql.append(" DESC");
       }
@@ -56,31 +62,35 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
   }
   @Override
   public List<T> list(String orderField, boolean orderByAsc){
-    String entityName=entityClazz.getSimpleName();
+    String entityName=entityClazz.getName();
     StringBuffer hsql=new StringBuffer();
     hsql.append( "FROM "+entityName);
-    appendOrderSQL(hsql,orderField,orderByAsc);
+    appendOrderSQL(hsql,ENTITY_ALIAS,orderField,orderByAsc);
     return getHibernateTemplate().find(hsql.toString());
   }
 
-  private void appendWhereSQL(
+  protected void appendWhereSQL(
       StringBuffer hsql,
       final String entityAlias,
       final String queryField,
       final Object queryValue){
     if(StringUtils.isEmpty(queryField)==false && queryValue!=null){
-      hsql.append(" WHERE ").append(entityAlias).append(".").append(queryField).append("=?");
+      if (hsql.indexOf("WHERE")<0)
+        hsql.append(" WHERE ");
+      else
+        hsql.append(" AND ");
+      hsql.append(entityAlias).append(".").append(queryField).append("=?");
     }
   }
   @Override
   public List<T> query(
       String queryField, Object queryValue,
       String orderField, boolean orderByAsc){
-    String entityName=entityClazz.getSimpleName();
+    String entityName=entityClazz.getName();
     StringBuffer hsql=new StringBuffer();
     hsql.append( "FROM "+entityName+" "+ENTITY_ALIAS);
     appendWhereSQL(hsql, ENTITY_ALIAS, queryField, queryValue);
-    appendOrderSQL(hsql,orderField,orderByAsc);
+    appendOrderSQL(hsql,ENTITY_ALIAS,orderField,orderByAsc);
     if (queryValue!=null)
       return getHibernateTemplate().find(hsql.toString(),queryValue);
     else
@@ -92,5 +102,7 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
     return getHibernateTemplate().load(entityClazz,id);
   }
 
-
+  protected Class<T> getEntityClazz() {
+    return entityClazz;
+  }
 }
