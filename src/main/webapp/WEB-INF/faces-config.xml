@@ -38,4 +38,18 @@
       <value>false</value>
     </managed-property>
   </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>columnDicBean</managed-bean-name>
+    <managed-bean-class>org.magiccat.backingbean.DicBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>catType</property-name>
+      <value>01</value>
+    </managed-property>
+    <managed-property>
+      <property-name>dicService</property-name>
+      <value>#{dicService}</value>
+    </managed-property>
+  </managed-bean>
 </faces-config>
