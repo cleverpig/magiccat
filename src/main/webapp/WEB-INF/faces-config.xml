@@ -51,5 +51,9 @@
       <property-name>dicService</property-name>
       <value>#{dicService}</value>
     </managed-property>
+    <managed-property>
+      <property-name>pageSize</property-name>
+      <value>4</value>
+    </managed-property>
   </managed-bean>
 </faces-config>

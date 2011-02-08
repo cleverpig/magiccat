@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.magiccat.dao.DicDAO;
+import org.magiccat.dao.QueryCondition;
 import org.magiccat.domain.Dic;
 
 import javax.persistence.*;
@@ -32,10 +33,10 @@ public class DicDAOImpl extends AbstractHibernateBaseDAOImpl<Dic,Integer> implem
         return (Dic) dics.get(0);
       }
       else if(dics==null || dics.size()==0){
-        throw new EntityNotFoundException("we couldn't found entity from HSQL:"+hsql);
+        throw new NoResultException("we couldn't found result from HSQL:"+hsql);
       }
       else{
-        throw new NonUniqueResultException("we couldn't found only one entity from HSQL:"+hsql);
+        throw new NonUniqueResultException("we couldn't found only one result from HSQL:"+hsql);
       }
     }
     else{

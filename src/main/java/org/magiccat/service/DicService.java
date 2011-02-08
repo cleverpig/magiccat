@@ -21,4 +21,8 @@ public interface DicService {
   void updateDic(Dic dic);
 
   void deleteDic(Integer id);
+
+  Long count();
+
+  List<Dic> queryPagedDics(String catType,int startRow,int pageSize);
 }

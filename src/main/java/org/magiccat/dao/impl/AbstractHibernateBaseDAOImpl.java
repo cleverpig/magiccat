@@ -3,11 +3,20 @@ package org.magiccat.dao.impl;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.magiccat.dao.AbstractHibernateBaseDAO;
+import org.magiccat.dao.OrderCondition;
+import org.magiccat.dao.QueryCondition;
 import org.magiccat.util.GenericTypeTool;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,14 +82,23 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
       StringBuffer hsql,
       final String entityAlias,
       final String queryField,
-      final Object queryValue){
+      final Object queryValue,
+      final String operator,
+      final String prefixRelation){
     if(StringUtils.isEmpty(queryField)==false && queryValue!=null){
       if (hsql.indexOf("WHERE")<0)
         hsql.append(" WHERE ");
       else
-        hsql.append(" AND ");
-      hsql.append(entityAlias).append(".").append(queryField).append("=?");
+        hsql.append(prefixRelation);
+      hsql.append("(").append(entityAlias).append(".").append(queryField).append(operator).append("?)");
     }
+  }
+  protected void appendWhereSQL(
+      StringBuffer hsql,
+      final String entityAlias,
+      final String queryField,
+      final Object queryValue){
+    appendWhereSQL(hsql, entityAlias, queryField, queryValue, QueryCondition.EQ_OP, QueryCondition.AND_RELATION);
   }
   @Override
   public List<T> query(
@@ -89,7 +107,9 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
     String entityName=entityClazz.getName();
     StringBuffer hsql=new StringBuffer();
     hsql.append( "FROM "+entityName+" "+ENTITY_ALIAS);
-    appendWhereSQL(hsql, ENTITY_ALIAS, queryField, queryValue);
+    appendWhereSQL(
+        hsql, ENTITY_ALIAS, queryField, queryValue,
+        QueryCondition.EQ_OP,QueryCondition.AND_RELATION);
     appendOrderSQL(hsql,ENTITY_ALIAS,orderField,orderByAsc);
     if (queryValue!=null)
       return getHibernateTemplate().find(hsql.toString(),queryValue);
@@ -100,6 +120,126 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
   @Override
   public T load(ID id) {
     return getHibernateTemplate().load(entityClazz,id);
+  }
+
+  @Override
+  public Long count(String queryField, Object queryValue) {
+    StringBuffer hsql=new StringBuffer();
+    hsql.append("SELECT COUNT(*) FROM "+entityClazz.getName()+" "+ENTITY_ALIAS);
+    appendWhereSQL(
+        hsql,ENTITY_ALIAS,queryField,queryValue,
+        QueryCondition.EQ_OP,QueryCondition.AND_RELATION);
+    List<Long> count=null;
+    if (queryValue!=null)
+      count= getHibernateTemplate().find(hsql.toString(),queryValue);
+    else
+      count= getHibernateTemplate().find(hsql.toString());
+    return count.get(0);
+  }
+
+  @Override
+  public Long count(List<QueryCondition> queryConditions) {
+    StringBuffer hsql=new StringBuffer();
+    hsql.append("SELECT COUNT(*) FROM "+entityClazz.getName()+" "+ENTITY_ALIAS);
+    appendWhereSQL(hsql,queryConditions);
+    List<Long> count=null;
+    count=getHibernateTemplate().find(hsql.toString(),collectQueryParamValues(queryConditions));
+    return count.get(0);
+  }
+
+  @Override
+  public List<T> queryPagedResult(
+      final String queryField,
+      final Object queryValue,
+      final String orderField,
+      final boolean orderByAsc,
+      final int startRow,
+      final int pageSize) {
+    final StringBuffer hsql=new StringBuffer();
+    hsql.append( "FROM "+entityClazz.getName()+" "+ENTITY_ALIAS);
+    appendWhereSQL(
+        hsql, ENTITY_ALIAS, queryField, queryValue,
+        QueryCondition.EQ_OP,QueryCondition.AND_RELATION);
+    appendOrderSQL(hsql,ENTITY_ALIAS,orderField,orderByAsc);
+
+    return getHibernateTemplate().executeFind(new HibernateCallback<List<T>>() {
+      @Override
+      public List<T> doInHibernate(Session session) throws HibernateException, SQLException {
+        session.createCriteria(hsql.toString());
+        Query query=session.createQuery(hsql.toString());
+        query.setParameter(0,queryValue);
+        query.setFirstResult(startRow);
+        query.setMaxResults(pageSize);
+        return query.list();
+      }
+    });
+  }
+
+  @Override
+  public List<T> queryPagedResult(
+      final List<QueryCondition> queryConditions,
+      final List<OrderCondition> orderConditions,
+      final int startRow,
+      final int pageSize) {
+    final StringBuffer hsql=new StringBuffer();
+    hsql.append( "FROM "+entityClazz.getName()+" "+ENTITY_ALIAS);
+    appendWhereSQL(hsql,queryConditions);
+    appendOrderSQL(hsql,orderConditions);
+    final Object[] queryParamValues=collectQueryParamValues(queryConditions);
+
+    return getHibernateTemplate().executeFind(new HibernateCallback<List<T>>() {
+      @Override
+      public List<T> doInHibernate(Session session) throws HibernateException, SQLException {
+        session.createCriteria(hsql.toString());
+        Query query=session.createQuery(hsql.toString());
+        int paramIndex=0;
+        for(Object paramValue:queryParamValues){
+          query.setParameter(paramIndex,paramValue);
+          paramIndex++;
+        }
+
+        query.setFirstResult(startRow);
+        query.setMaxResults(pageSize);
+        return query.list();
+      }
+    });
+  }
+
+  protected void appendWhereSQL(
+      StringBuffer hsql,
+      final List<QueryCondition> queryConditions){
+    for(QueryCondition queryCondition:queryConditions){
+      appendWhereSQL(
+          hsql,ENTITY_ALIAS,queryCondition.getName(),queryCondition.getValue(),
+          queryCondition.getOperator(),queryCondition.getPrefixRelation());
+    }
+  }
+
+  protected void appendOrderSQL(
+      StringBuffer hsql,
+      final List<OrderCondition> orderConditions){
+    for(OrderCondition orderCondition:orderConditions){
+      appendOrderSQL(hsql,ENTITY_ALIAS,orderCondition.getName(),orderCondition.getAsc());
+    }
+  }
+
+  protected Object[] collectQueryParamValues(
+      final List<QueryCondition> queryConditions){
+    Object[] params=new Object[(queryConditions.size())];
+    int index=0;
+    for(QueryCondition queryCondition:queryConditions){
+      params[index]=queryCondition.getValue();
+      index++;
+    }
+    return params;
+  }
+  @Override
+  public List<T> query(List<QueryCondition> queryConditions, List<OrderCondition> orderConditions) {
+    StringBuffer hsql=new StringBuffer();
+    hsql.append( "FROM "+entityClazz.getName()+" "+ENTITY_ALIAS);
+    appendWhereSQL(hsql,queryConditions);
+    appendOrderSQL(hsql,orderConditions);
+    return getHibernateTemplate().find(hsql.toString(),collectQueryParamValues(queryConditions));
   }
 
   protected Class<T> getEntityClazz() {

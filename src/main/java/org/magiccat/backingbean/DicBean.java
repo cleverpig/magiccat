@@ -15,17 +15,19 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class DicBean {
-  private List<Dic> dics;
+//  private List<Dic> dics;
   private DicService dicService;
   private String catType;
+  private DicDataModel listData;
+  private int pageSize;
 
-  public List<Dic> getDics() {
-    return dics;
-  }
+//  public List<Dic> getDics() {
+//    return dics;
+//  }
 
-  public void setDics(List<Dic> dics) {
-    this.dics = dics;
-  }
+//  public void setDics(List<Dic> dics) {
+//    this.dics = dics;
+//  }
 
   public String getCatType() {
     return catType;
@@ -43,9 +45,26 @@ public class DicBean {
     this.dicService = dicService;
   }
 
+  public DicDataModel getListData() {
+    return listData;
+  }
+
+  public void setListData(DicDataModel listData) {
+    this.listData = listData;
+  }
+
+  public int getPageSize() {
+    return pageSize;
+  }
+
+  public void setPageSize(int pageSize) {
+    this.pageSize = pageSize;
+  }
+
   @PostConstruct
   public void loadDicData() throws Exception {
-    dics=dicService.queryDicsByCatType(catType);
+//    dics=dicService.queryDicsByCatType(catType);
+    listData=new DicDataModel(catType,dicService,pageSize);
   }
 
   public void showActionHandler(ActionEvent event){

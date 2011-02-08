@@ -9,3 +9,10 @@ add Dictionary domain(Dic.java) and related DAO,Service.
 2011-02-07
 add ColumnDicBean and it's index page with simple no-lazy loading pagination for ColumnDicBean.
 TODO:make pagination lazy loading to looking reference: http://facestutorials.icefaces.org/tutorial/dataTable-JPA-tutorial.html
+
+2011-02-08
+add lazyDataModel and its extention(DicDataModel).make ColumnDicBean index page using this model to implement lazy loading.
+reference:
+  http://facestutorials.icefaces.org/tutorial/dataTable-JPA-tutorial.html
+  http://yanhua.javaeye.com/blog/390649
+  http://robert-reiz.com/2011/01/28/lazyloading-tables-with-icefaces-spring/

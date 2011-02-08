@@ -50,4 +50,14 @@ public class DicServiceImpl implements DicService {
     if (dic!=null)
       dicDAO.delete(dic);
   }
+
+  @Override
+  public Long count() {
+    return dicDAO.count(null,null);
+  }
+
+  @Override
+  public List<Dic> queryPagedDics(String catType,int startRow,int pageSize) {
+    return dicDAO.queryPagedResult("catTypes",catType,"entryId",true,startRow,pageSize);
+  }
 }

@@ -9,7 +9,8 @@ import javax.persistence.*;
  * Time: 下午3:08
  * To change this template use File | Settings | File Templates.
  */
-@Entity(name = "dic")
+@Entity(name="dic")
+@Table
 public class Dic {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
