@@ -57,7 +57,7 @@ public class DicServiceImpl implements DicService {
   }
 
   @Override
-  public List<Dic> queryPagedDics(String catType,int startRow,int pageSize) {
-    return dicDAO.queryPagedResult("catTypes",catType,"entryId",true,startRow,pageSize);
+  public List<Dic> queryPagedDics(String catType,String sortField,Boolean sortAscending,int startRow,int pageSize) {
+    return dicDAO.queryPagedResult("catTypes",catType,sortField,sortAscending,startRow,pageSize);
   }
 }

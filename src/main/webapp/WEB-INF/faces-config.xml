@@ -14,10 +14,6 @@
       <supported-locale>en</supported-locale>
     </locale-config>
     <message-bundle>org.magiccat.resourceBundle.Messages</message-bundle>
-    <!--<resource-bundle>-->
-      <!--<base-name>org.magiccat.resourceBundle.Messages</base-name>-->
-      <!--<var>messages</var>-->
-    <!--</resource-bundle>-->
 	</application>
 
   <!-- backingBean直接可以调用spring IoC的Bean -->

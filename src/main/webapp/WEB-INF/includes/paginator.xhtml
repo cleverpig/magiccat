@@ -7,7 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ice="http://www.icesoft.com/icefaces/component">
-<f:loadBundle var="messages" basename="org.magiccat.resourceBundle.Messages"/>
+<f:loadBundle var="labels" basename="org.magiccat.resourceBundle.Labels"/>
 <ui:composition>
   <ice:dataPaginator for="#{tableId}"
                      paginator="true"
@@ -58,7 +58,7 @@
                      rowsCountVar="rowsCount">
     <ice:outputFormat escape="false"
                       styleClass="standard"
-                      value="#{messages['tableHeadMessages']}">
+                      value="#{labels['tableHeadMessages']}">
       <f:param value="#{rowsCount}"/>
       <f:param value="#{displayedRowsCount}"/>
       <f:param value="#{firstRowIndex}"/>

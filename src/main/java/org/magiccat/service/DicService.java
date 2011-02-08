@@ -24,5 +24,5 @@ public interface DicService {
 
   Long count();
 
-  List<Dic> queryPagedDics(String catType,int startRow,int pageSize);
+  List<Dic> queryPagedDics(String catType,String sortField,Boolean sortAscending,int startRow,int pageSize);
 }

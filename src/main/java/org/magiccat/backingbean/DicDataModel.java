@@ -17,11 +17,20 @@ public class DicDataModel extends LazyDataModel<Dic> {
   private DicService dicService;
   private String catType;
   private int rowsPerPage;
+  private String sortField;
+  private Boolean sortAscending;
 
-  public DicDataModel(String catType,DicService dicService,int rowsPerPage) {
+  public DicDataModel(
+      String catType,
+      DicService dicService,
+      int rowsPerPage,
+      String sortField,
+      Boolean sortAscending) {
     this.dicService = dicService;
     this.catType=catType;
     this.rowsPerPage=rowsPerPage;
+    this.sortField=sortField;
+    this.sortAscending=sortAscending;
   }
 
   @Override
@@ -36,6 +45,6 @@ public class DicDataModel extends LazyDataModel<Dic> {
 
   @Override
   public List<Dic> findRows(int startRow, int finishRow) {
-    return dicService.queryPagedDics(catType,startRow,startRow+getRowsPerPage());
+    return dicService.queryPagedDics(catType,sortField,sortAscending,startRow,startRow+getRowsPerPage());
   }
 }

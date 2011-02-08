@@ -1,5 +1,8 @@
 package org.magiccat.backingbean;
 
+import com.icefaces.model.datamodel.SortableDataModel;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.magiccat.domain.Dic;
 import org.magiccat.service.DicService;
 
@@ -14,12 +17,17 @@ import java.util.List;
  * Time: 下午3:17
  * To change this template use File | Settings | File Templates.
  */
-public class DicBean {
+public class DicBean extends SortableDataModel {
 //  private List<Dic> dics;
   private DicService dicService;
   private String catType;
   private DicDataModel listData;
   private int pageSize;
+  private Log log= LogFactory.getLog(DicBean.class);
+
+  public DicBean() {
+    super("entryId");
+  }
 
 //  public List<Dic> getDics() {
 //    return dics;
@@ -46,6 +54,8 @@ public class DicBean {
   }
 
   public DicDataModel getListData() {
+//    log.debug("getListData...");
+    loadDicData();
     return listData;
   }
 
@@ -62,9 +72,12 @@ public class DicBean {
   }
 
   @PostConstruct
-  public void loadDicData() throws Exception {
+  public void loadDicData(){
 //    dics=dicService.queryDicsByCatType(catType);
-    listData=new DicDataModel(catType,dicService,pageSize);
+    log.debug("loadDicData...");
+    listData=new DicDataModel(
+        catType,dicService,pageSize,
+        getSortColumnName(),isSortAscending());
   }
 
   public void showActionHandler(ActionEvent event){
@@ -73,5 +86,10 @@ public class DicBean {
 
   public void editActionHandler(ActionEvent event){
 
+  }
+
+  @Override
+  public boolean isDefaultAscending(String sortColumn) {
+    return true;
   }
 }

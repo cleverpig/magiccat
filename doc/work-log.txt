@@ -16,3 +16,6 @@ reference:
   http://facestutorials.icefaces.org/tutorial/dataTable-JPA-tutorial.html
   http://yanhua.javaeye.com/blog/390649
   http://robert-reiz.com/2011/01/28/lazyloading-tables-with-icefaces-spring/
+
+2011-02-09
+add sortable feature to columnDicBean page
