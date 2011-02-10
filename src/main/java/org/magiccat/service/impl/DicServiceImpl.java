@@ -35,6 +35,11 @@ public class DicServiceImpl implements DicService {
   }
 
   @Override
+  public Dic loadDic(Integer id) {
+    return dicDAO.load(id);
+  }
+
+  @Override
   public void saveNewDic(Dic dic){
     dicDAO.save(dic);
   }

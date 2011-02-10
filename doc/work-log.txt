@@ -19,3 +19,7 @@ reference:
 
 2011-02-09
 add sortable feature to columnDicBean page
+
+2011-02-10
+add page index using dataTable's varStatus;add columnDicBean's edit and detail page;made a custom chinese-style boolean coverter;finish CRUD function in page.
+fix:mysql handle chinese encoding problem.

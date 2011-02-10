@@ -55,7 +55,7 @@ public class DicDAOTest extends AbstractBaseTestCase<DicDAO>{
     assertTrue(dics!=null && dics.size()>0);
 
     dics=dao.queryPagedResult("catTypes","01","entryId",true,3,5);
-    assertTrue(dics==null || dics.size()==0);
+    assertTrue(dics!=null && dics.size()>0);
   }
 
   public void testQueryPagedResultWithConditions() throws Exception {
@@ -71,7 +71,7 @@ public class DicDAOTest extends AbstractBaseTestCase<DicDAO>{
     assertTrue(dics!=null && dics.size()>0);
 
     dics=dao.queryPagedResult(q,o,3,5);
-    assertFalse(dics!=null && dics.size()>0);
+    assertTrue(dics!=null && dics.size()>0);
   }
 
   public void testQueryWithConditions() throws Exception {

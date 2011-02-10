@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<ui:composition>
+  <ice:panelGrid columns="2">
+    <ice:outputLabel for="catTypes" value="#{msg['Dic.catTypes']}" />
+    <ice:outputText id="catTypes" value="#{columnDicBean.dic.catTypes}"/>
+
+    <ice:outputLabel for="entryId" value="#{msg['Dic.entryId']}" />
+    <ice:outputText id="entryId" value="#{columnDicBean.dic.entryId}"/>
+
+    <ice:outputLabel for="entryVal" value="#{msg['Dic.entryVal']}" />
+    <ice:outputText id="entryVal" value="#{columnDicBean.dic.entryVal}"/>
+
+    <ice:outputLabel for="entryOrder" value="#{msg['Dic.entryOrder']}" />
+    <ice:outputText id="entryOrder" value="#{columnDicBean.dic.entryOrder}"/>
+
+    <ice:outputLabel for="enabled" value="#{msg['Dic.isEnabled']}" />
+    <ice:outputText id="enabled" value="#{columnDicBean.dic.enabled}">
+      <f:converter converterId="booleanZhConverter"/>
+    </ice:outputText>
+
+  </ice:panelGrid>
+
+  <ice:panelGrid columns="1">
+    <ice:commandLink value="#{labels['return']}" actionListener="#{columnDicBean.returnActionHandler}"/>
+  </ice:panelGrid>
+</ui:composition>
+
+</html>

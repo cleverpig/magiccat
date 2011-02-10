@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<f:loadBundle var="msg" basename="org.magiccat.resourceBundle.Dic"/>
+<f:loadBundle var="labels" basename="org.magiccat.resourceBundle.Labels"/>
+<head>
+  <title></title>
+  <ice:outputStyle href="/xmlhttp/css/rime/rime.css"></ice:outputStyle>
+</head>
+<body>
+<ice:form id="form" partialSubmit="true">
+  <ice:messages/>
+  <ice:panelGrid id="listGrid" columns="1" border="1" rendered="#{columnDicBean.showList}">
+
+    <ice:panelGroup>
+      <ice:dataTable id="columnList"
+                     rows="4"
+                     value="#{columnDicBean.listData}"
+                     sortColumn="#{columnDicBean.sortColumnName}"
+                     sortAscending="#{columnDicBean.sortAscending}"
+                     var="item"
+                     varStatus="status">
+        <h:column>
+          <f:facet name="header">
+            <ice:outputText value="#{labels['listIndex']}"/>
+          </f:facet>
+          <ice:outputText value="#{status.index+1}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <ice:commandSortHeader columnName="entryId" arrow="true">
+              <ice:outputText value="#{msg['Dic.entryId']}"/>
+            </ice:commandSortHeader>
+          </f:facet>
+          #{item.entryId}
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <ice:commandSortHeader columnName="entryVal" arrow="true">
+              <ice:outputText value="#{msg['Dic.entryVal']}"/>
+            </ice:commandSortHeader>
+          </f:facet>
+          <ice:commandLink value="#{item.entryVal}" actionListener="#{columnDicBean.showActionHandler}">
+            <f:param id="id" name="id" value="#{item.id}"/>
+          </ice:commandLink>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <ice:outputText value="#{labels['opItem']}"/>
+          </f:facet>
+          <ice:commandButton value="#{labels['edit']}" actionListener="#{columnDicBean.editActionHandler}">
+            <f:param id="id" name="id" value="#{item.id}"/>
+          </ice:commandButton>
+          <ice:commandLink value="#{labels['delete']}"
+                           actionListener="#{columnDicBean.delActionHandler}"
+                           panelConfirmation="confirmDeletion"
+                  >
+            <f:param id="id" name="id" value="#{item.id}"/>
+          </ice:commandLink>
+          <ice:panelConfirmation id="confirmDeletion"
+                                 acceptLabel="#{labels['yes']}"
+                                 cancelLabel="#{labels['no']}"
+                                 message="#{labels['deleteConfirmMessages']}"
+                                 title="#{labels['deleteConfirmTitle']}"
+                                 draggable="false"
+                  />
+        </h:column>
+      </ice:dataTable>
+    </ice:panelGroup>
+
+    <ice:panelGroup>
+      <ui:include src="/includes/paginator.xhtml">
+        <ui:param name="tableId" value="columnList"/>
+      </ui:include>
+    </ice:panelGroup>
+
+    <ice:panelGroup>
+      <ice:commandButton value="#{labels['new']}" actionListener="#{columnDicBean.newActionHandler}"/>
+    </ice:panelGroup>
+  </ice:panelGrid>
+
+  <ice:panelGrid id="editGrid" columns="1" border="1" rendered="#{columnDicBean.showEdit}">
+    <ui:include src="edit.xhtml">
+      <ui:param name="columnDicBean" value="#{columnDicBean}"/>
+    </ui:include>
+  </ice:panelGrid>
+
+  <ice:panelGrid id="detailGrid" columns="1" border="1" rendered="#{columnDicBean.showDetail}">
+    <ui:include src="detail.xhtml">
+      <!--<ui:param name="columnDicBean" value="#{columnDicBean}"/>-->
+    </ui:include>
+  </ice:panelGrid>
+
+</ice:form>
+</body>
+</html>

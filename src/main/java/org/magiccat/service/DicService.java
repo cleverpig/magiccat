@@ -16,6 +16,8 @@ public interface DicService {
 
   Dic loadDic(String catType, String entryId) throws Exception;
 
+  Dic loadDic(Integer id);
+
   void saveNewDic(Dic dic);
 
   void updateDic(Dic dic);
@@ -25,4 +27,5 @@ public interface DicService {
   Long count();
 
   List<Dic> queryPagedDics(String catType,String sortField,Boolean sortAscending,int startRow,int pageSize);
+
 }

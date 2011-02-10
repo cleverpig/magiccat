@@ -1,4 +1,4 @@
-package com.icefaces.model.datamodel;
+package org.magiccat.backingbean;
 
 /**
  * Created by IntelliJ IDEA.
@@ -7,13 +7,13 @@ package com.icefaces.model.datamodel;
  * Time: 上午6:42
  * To change this template use File | Settings | File Templates.
  */
-public abstract class SortableDataModel {
+public abstract class SortableBean {
   // Sortable Headers
   private String sortColumnName;
   private boolean sortAscending;
 
 
-  public SortableDataModel(String defaultSortColumn) {
+  public SortableBean(String defaultSortColumn) {
     sortColumnName = defaultSortColumn;
     sortAscending = isDefaultAscending(defaultSortColumn);
   }

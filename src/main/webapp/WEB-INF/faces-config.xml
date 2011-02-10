@@ -14,7 +14,13 @@
       <supported-locale>en</supported-locale>
     </locale-config>
     <message-bundle>org.magiccat.resourceBundle.Messages</message-bundle>
+
 	</application>
+
+  <converter>
+    <converter-id>booleanZhConverter</converter-id>
+    <converter-class>javax.faces.convert.BooleanZhConverter</converter-class>
+  </converter>
 
   <!-- backingBean直接可以调用spring IoC的Bean -->
   <managed-bean>

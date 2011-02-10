@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-   <property name="url" value="jdbc:mysql://localhost:3306/magiccat"/>
+   <property name="url" value="jdbc:mysql://localhost:3306/magiccat?characterEncoding=UTF-8"/>
    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
    <property name="username" value="magiccat"/>
    <property name="password" value="nytdcq"/>
