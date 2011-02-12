@@ -8,16 +8,21 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ice="http://www.icesoft.com/icefaces/component">
 <f:loadBundle var="msg" basename="org.magiccat.resourceBundle.Dic"/>
-<f:loadBundle var="labels" basename="org.magiccat.resourceBundle.Labels"/>
 <head>
   <title></title>
   <ice:outputStyle href="/xmlhttp/css/rime/rime.css"></ice:outputStyle>
 </head>
 <body>
 <ice:form id="form" partialSubmit="true">
-  <ice:messages/>
+  <ice:messages showSummary="true" showDetail="true" />
   <ice:panelGrid id="listGrid" columns="1" border="1" rendered="#{columnDicBean.showList}">
-
+    <ice:panelGroup>
+      <ice:panelGrid columns="3">
+        <ice:outputLabel for="queryEntryVal" value="#{msg['Dic.query.EntryVal']}"/>
+        <ice:inputText id="queryEntryVal" value="#{columnDicBean.queryEntryVal}"/>
+        <ice:commandButton value="#{labels['query']}" actionListener="#{columnDicBean.queryActionHandler}"/>
+      </ice:panelGrid>
+    </ice:panelGroup>
     <ice:panelGroup>
       <ice:dataTable id="columnList"
                      rows="4"
@@ -75,7 +80,7 @@
     </ice:panelGroup>
 
     <ice:panelGroup>
-      <ui:include src="/includes/paginator.xhtml">
+      <ui:include src="/includes/_paginator.xhtml">
         <ui:param name="tableId" value="columnList"/>
       </ui:include>
     </ice:panelGroup>
@@ -86,14 +91,14 @@
   </ice:panelGrid>
 
   <ice:panelGrid id="editGrid" columns="1" border="1" rendered="#{columnDicBean.showEdit}">
-    <ui:include src="edit.xhtml">
+    <ui:include src="_edit.xhtml">
       <ui:param name="columnDicBean" value="#{columnDicBean}"/>
     </ui:include>
   </ice:panelGrid>
 
   <ice:panelGrid id="detailGrid" columns="1" border="1" rendered="#{columnDicBean.showDetail}">
-    <ui:include src="detail.xhtml">
-      <!--<ui:param name="columnDicBean" value="#{columnDicBean}"/>-->
+    <ui:include src="_detail.xhtml">
+      <ui:param name="columnDicBean" value="#{columnDicBean}"/>
     </ui:include>
   </ice:panelGrid>
 

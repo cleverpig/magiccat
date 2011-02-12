@@ -76,6 +76,7 @@
           <element id="library" level="project" name="Maven: com.jhlabs:imaging:01012005" />
           <element id="library" level="project" name="Maven: cglib:cglib-nodep:2.1_3" />
           <element id="library" level="project" name="Maven: javassist:javassist:3.3.GA" />
+          <element id="library" level="project" name="Maven: com.ocpsoft:prettyfaces-jsf12:3.2.0" />
         </element>
       </element>
     </root>

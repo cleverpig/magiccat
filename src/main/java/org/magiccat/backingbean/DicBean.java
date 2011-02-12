@@ -1,18 +1,23 @@
 package org.magiccat.backingbean;
 
-import com.sun.facelets.FaceletContext;
+import com.icefaces.model.datamodel.PaginationDataModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.magiccat.dao.OrderCondition;
+import org.magiccat.dao.QueryCondition;
 import org.magiccat.domain.Dic;
 import org.magiccat.service.DicService;
+import org.magiccat.util.BeanHelper;
 import org.magiccat.util.BooleanSelectItems;
+import org.magiccat.util.MessageHelper;
+import org.magiccat.util.QueryHelper;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIParameter;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,8 +27,7 @@ import java.util.List;
  * Time: 下午3:17
  * To change this template use File | Settings | File Templates.
  */
-public class DicBean extends SortableBean {
-//  private List<Dic> dics;
+public class DicBean extends SortableBean implements QueryableBean{
   private DicService dicService;
   private String catType;
   private DicDataModel listData;
@@ -34,8 +38,9 @@ public class DicBean extends SortableBean {
   private Boolean showEdit;
   private Boolean showList;
   private Boolean showDetail;
-
+  private String queryEntryVal;
   private List<SelectItem> enableOptions;
+  private final String FORM_ID="form";
 
   public DicBean() {
     super("entryId");
@@ -44,14 +49,6 @@ public class DicBean extends SortableBean {
     showDetail=false;
     enableOptions=BooleanSelectItems.OPTIONS;
   }
-
-//  public List<Dic> getDics() {
-//    return dics;
-//  }
-
-//  public void setDics(List<Dic> dics) {
-//    this.dics = dics;
-//  }
 
   public String getCatType() {
     return catType;
@@ -70,8 +67,6 @@ public class DicBean extends SortableBean {
   }
 
   public DicDataModel getListData() {
-//    log.debug("getListData...");
-    loadDicData();
     return listData;
   }
 
@@ -127,13 +122,50 @@ public class DicBean extends SortableBean {
     this.enableOptions = enableOptions;
   }
 
+  public String getQueryEntryVal() {
+    return queryEntryVal;
+  }
+
+  public void setQueryEntryVal(String queryEntryVal) {
+    this.queryEntryVal = queryEntryVal;
+  }
+
+  @Override
+  public List<QueryCondition> constructQueryConditions(){
+    List<QueryCondition> queryConditions = new ArrayList<QueryCondition>();
+    queryConditions.add(new QueryCondition("catTypes",catType,QueryCondition.EQ_OP,QueryCondition.AND_RELATION));
+    QueryCondition queryEntryValCondition= QueryHelper.constructLikeCondition("entryVal", queryEntryVal, QueryCondition.AND_RELATION);
+    log.debug("remarkListDataIsDirty...queryEntryVal="+queryEntryVal);
+    if (queryEntryValCondition!=null){
+      queryConditions.add(queryEntryValCondition);
+      log.debug("remarkListDataIsDirty...queryEntryValCondition="+queryEntryValCondition.toString());
+    }
+    return queryConditions;
+  }
+
+  @Override
+  public List<OrderCondition> constructOrderConditions(){
+    List<OrderCondition> orderConditions=new ArrayList<OrderCondition>(1);
+    orderConditions.add(new OrderCondition(getSortColumnName(),isSortAscending()));
+    return orderConditions;
+  }
+
+  @Override
+  public void notifyDataModelChange(){
+    listData.setQueryConditions(constructQueryConditions());
+    listData.setOrderConditions(constructOrderConditions());
+    listData.setDirtyData(true);
+  }
+
   @PostConstruct
   public void loadDicData(){
-//    dics=dicService.queryDicsByCatType(catType);
     log.debug("loadDicData...");
-    listData=new DicDataModel(
-        catType,dicService,pageSize,
-        getSortColumnName(),isSortAscending());
+    if (listData==null){
+      listData=new DicDataModel(
+          dicService,pageSize,
+          constructQueryConditions(),
+          constructOrderConditions());
+    }
   }
 
   private boolean loadDicById(ActionEvent event,String paramName){
@@ -143,12 +175,10 @@ public class DicBean extends SortableBean {
       return true;
     }
     else{
-      FacesContext context=FacesContext.getCurrentInstance();
-      FacesMessage message=new FacesMessage();
-      message.setSeverity(FacesMessage.SEVERITY_ERROR);
-      message.setSummary("数据不存在");
-      message.setDetail("试图取出id值为"+param.getValue()+"的数据时没有找到数据");
-      context.addMessage("form",message);
+      BeanHelper.addMessageToContext(
+            "数据不存在","试图取出id值为\"+param.getValue()+\"的数据时没有找到数据",
+            FacesMessage.SEVERITY_ERROR,FORM_ID
+        );
       return false;
     }
   }
@@ -170,22 +200,52 @@ public class DicBean extends SortableBean {
   }
 
   public void saveActionHandler(ActionEvent event){
+    //update
     if (dic!=null && dic.getId()!=null && dic.getId()>0){
-      dicService.updateDic(dic);
-      returnToList();
+      Dic oldDic=dicService.loadDic(dic.getId());
+      if (oldDic.getEntryId().equals(dic.getEntryId())==false){//user had modified entryId!
+        if (dicService.isRecordExist(catType,dic.getEntryId())){//this modified entryId has been existed!
+          BeanHelper.addMessageToContext(FORM_ID,
+              MessageHelper.constructFacesMessageFromBundle(
+                  MessageHelper.VALIDATE_RESOURCE_BUNDLE,MessageHelper.MESSAGE_TYPE.DATA_EXSIT
+              )
+          );
+          return;
+        }
+        else{//user's entryId didn't exist!
+          dicService.updateDic(dic);
+          returnToList();
+          notifyDataModelChange();
+        }
+      }
+      else{//user hadn't modified entryId
+        dicService.updateDic(dic);
+        returnToList();
+        notifyDataModelChange();
+      }
+
     }
     else{
+      //save
       if (dic!=null){
-        dicService.saveNewDic(dic);
-        returnToList();
+        if (dicService.isRecordExist(catType,dic.getEntryId())==false){
+          dicService.saveNewDic(dic);
+          returnToList();
+          notifyDataModelChange();
+        }
+        else{
+          BeanHelper.addMessageToContext(FORM_ID,
+              MessageHelper.constructFacesMessageFromBundle(
+                  MessageHelper.VALIDATE_RESOURCE_BUNDLE,MessageHelper.MESSAGE_TYPE.DATA_EXSIT
+              )
+          );
+        }
       }
       else{
-        FacesContext context=FacesContext.getCurrentInstance();
-        FacesMessage message=new FacesMessage();
-        message.setSeverity(FacesMessage.SEVERITY_ERROR);
-        message.setSummary("数据无法保存");
-        message.setDetail("提交的数据为空");
-        context.addMessage("form",message);
+        BeanHelper.addMessageToContext(FORM_ID,
+            MessageHelper.constructFacesMessageFromBundle(
+                MessageHelper.VALIDATE_RESOURCE_BUNDLE,MessageHelper.MESSAGE_TYPE.DATA_IS_NULL
+            ));
       }
     }
 
@@ -212,10 +272,24 @@ public class DicBean extends SortableBean {
   public void delActionHandler(ActionEvent event){
     UIParameter param= (UIParameter) event.getComponent().findComponent("id");
     dicService.deleteDic((Integer)param.getValue());
+    notifyDataModelChange();
   }
 
+  public void queryActionHandler(ActionEvent event){
+    notifyDataModelChange();
+  }
   @Override
   public boolean isDefaultAscending(String sortColumn) {
     return true;
+  }
+
+}
+class DicDataModel extends PaginationDataModel<Dic> {
+
+  public DicDataModel(
+      DicService dicService, int rowsPerPage,
+      List<QueryCondition> queryConditions,
+      List<OrderCondition> orderConditions) {
+    super(dicService,rowsPerPage,queryConditions,orderConditions);
   }
 }

@@ -86,4 +86,5 @@ public class DicDAOTest extends AbstractBaseTestCase<DicDAO>{
     List<Dic> dics=dao.query(q,o);
     assertTrue(dics!=null && dics.size()>0);
   }
+
 }

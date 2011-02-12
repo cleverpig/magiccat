@@ -30,8 +30,11 @@ public abstract class LazyDataModel<DTO> extends DataModel {
   private List<DTO> wrappedData;
   private int wrappedDataBeginRowIndex = -1;
   private int wrappedDataEndRowIndex = -1;
+  private Boolean dirtyData=false;
 
   @Override public boolean isRowAvailable() {
+//    if (wrappedData==null)
+//      return false;
     int rowIndex = getRowIndex();
     return (rowIndex >= 0) && (rowIndex < getRowCount());
   }
@@ -83,8 +86,7 @@ public abstract class LazyDataModel<DTO> extends DataModel {
 
   @Override public List<DTO> getWrappedData() {
 
-    if (wrappedData == null) {
-
+    if (wrappedData == null || (dirtyData && rowIndex==getWrappedDataBeginRowIndex())) {
       int wrappedDataBeginRowIndex = rowIndex;
       int wrappedDataEndRowIndex = Math.min(rowIndex + getRowsPerPage() - 1, getRowCount() - 1);
 
@@ -93,10 +95,11 @@ public abstract class LazyDataModel<DTO> extends DataModel {
             "finding new wrappedDataBeginRowIndex=[" + wrappedDataBeginRowIndex + "] wrappedDataEndRowIndex=[" +
                 wrappedDataEndRowIndex + "]");
       }
-
+      log.info("getWrappedData...refetching data");
       setWrappedData(findRows(wrappedDataBeginRowIndex, wrappedDataEndRowIndex));
       setWrappedDataEndRowIndex(wrappedDataEndRowIndex);
       setWrappedDataBeginRowIndex(wrappedDataBeginRowIndex);
+      dirtyData=false;
     }
 
     return wrappedData;
@@ -135,6 +138,17 @@ public abstract class LazyDataModel<DTO> extends DataModel {
     setWrappedData(null);
     setWrappedDataBeginRowIndex(-1);
     setWrappedDataEndRowIndex(-1);
+  }
+
+  public Boolean isDirtyData() {
+    return dirtyData;
+  }
+
+  public void setDirtyData(Boolean dirtyData) {
+    if (dirtyData){
+      clearCache();
+    }
+    this.dirtyData = dirtyData;
   }
 
   public abstract int getRowsPerPage();

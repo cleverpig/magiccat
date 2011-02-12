@@ -162,7 +162,7 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
         QueryCondition.EQ_OP,QueryCondition.AND_RELATION);
     appendOrderSQL(hsql,ENTITY_ALIAS,orderField,orderByAsc);
 
-    return getHibernateTemplate().executeFind(new HibernateCallback<List<T>>() {
+    List<T> resultset= getHibernateTemplate().executeFind(new HibernateCallback<List<T>>() {
       @Override
       public List<T> doInHibernate(Session session) throws HibernateException, SQLException {
         session.createCriteria(hsql.toString());
@@ -173,6 +173,11 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
         return query.list();
       }
     });
+    if(resultset!=null && resultset.size()>0){
+      return resultset;
+    }
+    else
+      return null;
   }
 
   @Override
@@ -187,7 +192,7 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
     appendOrderSQL(hsql,orderConditions);
     final Object[] queryParamValues=collectQueryParamValues(queryConditions);
 
-    return getHibernateTemplate().executeFind(new HibernateCallback<List<T>>() {
+    List<T> resultset=getHibernateTemplate().executeFind(new HibernateCallback<List<T>>() {
       @Override
       public List<T> doInHibernate(Session session) throws HibernateException, SQLException {
         session.createCriteria(hsql.toString());
@@ -203,7 +208,27 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
         return query.list();
       }
     });
+    if(resultset!=null && resultset.size()>0){
+      return resultset;
+    }
+    else
+      return null;
   }
+
+  @Override
+  public List<T> queryPagedResult(List<QueryCondition> queryConditions, String orderField, boolean orderByAsc, int startRow, int pageSize) {
+    List<OrderCondition> orderConditions=new ArrayList<OrderCondition>(1);
+    orderConditions.add(new OrderCondition(orderField,orderByAsc));
+    return queryPagedResult(queryConditions,orderConditions,startRow,pageSize);
+  }
+
+  @Override
+  public List<T> queryPagedResult(List<QueryCondition> queryConditions, OrderCondition orderCondition, int startRow, int pageSize) {
+    List<OrderCondition> orderConditions=new ArrayList<OrderCondition>(1);
+    orderConditions.add(orderCondition);
+    return queryPagedResult(queryConditions,orderConditions,startRow,pageSize);
+  }
+
 
   protected void appendWhereSQL(
       StringBuffer hsql,

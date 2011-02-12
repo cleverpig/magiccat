@@ -66,4 +66,14 @@ public class QueryCondition {
   public void setPrefixRelation(String prefixRelation) {
     this.prefixRelation = prefixRelation;
   }
+
+  @Override
+  public String toString() {
+    return "QueryCondition{" +
+        "name='" + name + '\'' +
+        ", value=" + value +
+        ", operator='" + operator + '\'' +
+        ", prefixRelation='" + prefixRelation + '\'' +
+        '}';
+  }
 }

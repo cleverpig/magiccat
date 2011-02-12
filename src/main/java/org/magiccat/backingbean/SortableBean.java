@@ -24,6 +24,12 @@ public abstract class SortableBean {
   public abstract boolean isDefaultAscending(String sortColumn);
 
   /**
+   * this function will be called when sortColumn or ascending changed.
+   * it will cause datamodel to refetch data from database
+   */
+  public abstract void notifyDataModelChange();
+
+  /**
    * Gets the sortColumnName column.
    *
    * @return column to sortColumnName
@@ -40,6 +46,7 @@ public abstract class SortableBean {
   public void setSortColumnName(String sortColumnName) {
     if (!sortColumnName.equals(this.sortColumnName)) {
       this.sortColumnName = sortColumnName;
+      notifyDataModelChange();
     }
   }
 
@@ -60,6 +67,7 @@ public abstract class SortableBean {
   public void setSortAscending(boolean sortAscending) {
     if (sortAscending != (this.sortAscending)) {
       this.sortAscending = sortAscending;
+      notifyDataModelChange();
     }
   }
 

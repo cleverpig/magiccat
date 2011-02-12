@@ -8,6 +8,8 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/javax/faces/jsf-api/1.2/jsf-api-1.2-sources.jar!/" />
+      <root url="file://F:/software/dev-library开发库/mojarra-1.2_15-b01-FCS-sources/jsf-ri/src" />
+      <root url="file://F:/software/dev-library开发库/mojarra-1.2_15-b01-FCS-sources/jsf-api/src" />
     </SOURCES>
   </library>
 </component>

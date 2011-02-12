@@ -119,6 +119,7 @@
     <orderEntry type="library" name="Maven: com.jhlabs:imaging:01012005" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib-nodep:2.1_3" level="project" />
     <orderEntry type="library" name="Maven: javassist:javassist:3.3.GA" level="project" />
+    <orderEntry type="library" name="Maven: com.ocpsoft:prettyfaces-jsf12:3.2.0" level="project" />
   </component>
 </module>
 

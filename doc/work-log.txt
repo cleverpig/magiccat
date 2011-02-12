@@ -23,3 +23,23 @@ add sortable feature to columnDicBean page
 2011-02-10
 add page index using dataTable's varStatus;add columnDicBean's edit and detail page;made a custom chinese-style boolean coverter;finish CRUD function in page.
 fix:mysql handle chinese encoding problem.
+
+2011-02-11
+add:
+  columnDicBean's page field and application-level validators(for validating record exist).
+  name query condition to columnDicBean's list page.
+  make labels_zh.properties to be a global resource bundle.
+  make index.faces to be default page name.
+  move chinese message from DicBean to messageBundle.
+
+2010-02-12
+add:
+  jetty7 as web container,we will get benifit from its auto load(hot deploy) feature.
+fix:
+  tomcat's maven plugin conflict:
+    when use maven to run tomcat,please write full name such as:org.codehaus.mojo:tomcat-maven-plugin:run
+    since there was a name conflict:http://blog.csdn.net/walkingmanc/archive/2010/09/01/5856491.aspx
+add:
+  name query condition to columnDicBean's list page;
+  columnDicBean's page field and application-level validators;
+  use prettyfaces framework to make url more restful.

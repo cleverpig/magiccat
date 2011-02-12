@@ -44,5 +44,13 @@ public interface AbstractHibernateBaseDAO<T,ID extends Serializable> {
       List<OrderCondition> orderConditions,
       int startRow,int pageSize);
 
+  List<T> queryPagedResult(
+      List<QueryCondition> queryConditions,
+      String orderField, boolean orderByAsc,
+      int startRow,int pageSize);
 
+  List<T> queryPagedResult(
+      List<QueryCondition> queryConditions,
+      OrderCondition orderCondition,
+      int startRow,int pageSize);
 }

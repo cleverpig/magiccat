@@ -29,7 +29,9 @@
   </ice:panelGrid>
 
   <ice:panelGrid columns="1">
-    <ice:commandLink value="#{labels['return']}" actionListener="#{columnDicBean.returnActionHandler}"/>
+    <ice:commandLink value="#{labels['return']}"
+                     immediate="true"
+                     actionListener="#{columnDicBean.returnActionHandler}"/>
   </ice:panelGrid>
 </ui:composition>
 

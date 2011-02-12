@@ -1,9 +1,13 @@
 package org.magiccat.service.impl;
 
 import org.magiccat.dao.DicDAO;
+import org.magiccat.dao.OrderCondition;
+import org.magiccat.dao.QueryCondition;
 import org.magiccat.domain.Dic;
 import org.magiccat.service.DicService;
+import org.magiccat.util.QueryHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,7 +66,41 @@ public class DicServiceImpl implements DicService {
   }
 
   @Override
-  public List<Dic> queryPagedDics(String catType,String sortField,Boolean sortAscending,int startRow,int pageSize) {
-    return dicDAO.queryPagedResult("catTypes",catType,sortField,sortAscending,startRow,pageSize);
+  public Long count(List<QueryCondition> queryConditions) {
+    return dicDAO.count(queryConditions);
+  }
+
+  @Override
+  public List<Dic> queryPagedResult(
+      String catType, String queryEntryVal,
+      String sortField, Boolean sortAscending,
+      int startRow, int pageSize) {
+    List<QueryCondition> queryConditions=new ArrayList<QueryCondition>();
+    queryConditions.add(new QueryCondition("catTypes",catType,QueryCondition.EQ_OP,QueryCondition.AND_RELATION));
+    QueryCondition queryEntryValCondition= QueryHelper.constructLikeCondition("entryVal", queryEntryVal, QueryCondition.AND_RELATION);
+    if (queryEntryValCondition!=null)
+      queryConditions.add(queryEntryValCondition);
+    List<OrderCondition> orderConditions=new ArrayList<OrderCondition>();
+    orderConditions.add(new OrderCondition(sortField,sortAscending));
+
+    return dicDAO.queryPagedResult(queryConditions,orderConditions,startRow,pageSize);
+  }
+
+  @Override
+  public List<Dic> queryPagedResult(List<QueryCondition> queryConditions, List<OrderCondition> orderConditions, int startRow, int pageSize) {
+    return dicDAO.queryPagedResult(queryConditions,orderConditions,startRow,pageSize);
+  }
+
+  @Override
+  public List<Dic> queryPagedResult(List<QueryCondition> queryConditions, OrderCondition orderCondition, int startRow, int pageSize) {
+    return dicDAO.queryPagedResult(queryConditions,orderCondition,startRow,pageSize);
+  }
+
+  @Override
+  public Boolean isRecordExist(String catType, String entryId) {
+    List<QueryCondition> queryConditions=new ArrayList<QueryCondition>(2);
+    queryConditions.add(new QueryCondition("catTypes",catType,QueryCondition.EQ_OP,QueryCondition.AND_RELATION));
+    queryConditions.add(new QueryCondition("entryId",entryId,QueryCondition.EQ_OP,QueryCondition.AND_RELATION));
+    return dicDAO.count(queryConditions)>0;
   }
 }

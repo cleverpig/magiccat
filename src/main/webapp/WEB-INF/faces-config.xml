@@ -14,7 +14,14 @@
       <supported-locale>en</supported-locale>
     </locale-config>
     <message-bundle>org.magiccat.resourceBundle.Messages</message-bundle>
-
+    <resource-bundle>
+      <base-name>org.magiccat.resourceBundle.Labels</base-name>
+      <var>labels</var>
+    </resource-bundle>
+    <resource-bundle>
+      <base-name>org.magiccat.resourceBundle.Validate</base-name>
+      <var>validate</var>
+    </resource-bundle>
 	</application>
 
   <converter>
