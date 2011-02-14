@@ -437,6 +437,12 @@
       <scope>compile</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.bjinfotech.extJsf</groupId>
+      <artifactId>customJsfComponent</artifactId>
+      <version>1.0</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>

@@ -43,3 +43,12 @@ add:
   name query condition to columnDicBean's list page;
   columnDicBean's page field and application-level validators;
   use prettyfaces framework to make url more restful.
+add:
+  make outputConnectionStatus component display local language with bridge-messages_zh.properties.
+  reference:
+    http://www.icefaces.org/JForum/posts/list/9321.page
+    http://jira.icefaces.org/browse/ICE-3016
+
+2010-02-14
+add:
+  kindeditor component with fileUpload and fileManager features.
