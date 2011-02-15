@@ -18,5 +18,5 @@
 
   <bean id="articleDAO" class="org.magiccat.dao.impl.ArticleDAOImpl" parent="baseDAO"/>
 
-  <bean id="dicDAO" class="org.magiccat.dao.impl.DicDAOImpl" parent="baseDAO"/>
+  <bean id="columnDicDAO" class="org.magiccat.dao.impl.ColumnDicDAOImpl" parent="baseDAO"/>
 </beans>

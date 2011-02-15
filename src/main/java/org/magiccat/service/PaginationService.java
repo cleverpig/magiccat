@@ -2,7 +2,6 @@ package org.magiccat.service;
 
 import org.magiccat.dao.OrderCondition;
 import org.magiccat.dao.QueryCondition;
-import org.magiccat.domain.Dic;
 
 import java.util.List;
 

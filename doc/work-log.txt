@@ -52,3 +52,6 @@ add:
 2010-02-14
 add:
   kindeditor component with fileUpload and fileManager features.
+
+2010-02-15
+refact:Dic domain and related DAOs,Services,Beans.let ColumnDic has a heritance from Dic.

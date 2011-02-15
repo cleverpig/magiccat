@@ -7,15 +7,11 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ice="http://www.icesoft.com/icefaces/component">
+<f:loadBundle var="msg" basename="org.magiccat.resourceBundle.Dic"/>
+<f:loadBundle var="labels" basename="org.magiccat.resourceBundle.Labels"/>
 <ui:composition>
   <ice:inputHidden id="id" value="#{columnDicBean.dic.id}"/>
   <ice:panelGrid columns="3">
-    <ice:outputLabel for="catTypes" value="#{msg['Dic.catTypes']}" />
-    <ice:inputText id="catTypes" value="#{columnDicBean.dic.catTypes}" required="true">
-      <f:validateLength minimum="1" maximum="2"/>
-    </ice:inputText>
-    <ice:message for="catTypes"/>
-
     <ice:outputLabel for="entryId" value="#{msg['Dic.entryId']}" />
     <ice:inputText id="entryId" value="#{columnDicBean.dic.entryId}" required="true"/>
     <ice:message for="entryId"/>

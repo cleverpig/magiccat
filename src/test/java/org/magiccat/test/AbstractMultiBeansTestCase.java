@@ -5,6 +5,8 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.HashMap;
+
 /**
  * Created by IntelliJ IDEA.
  * User: cleverpig
@@ -12,15 +14,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Time: 下午3:16
  * To change this template use File | Settings | File Templates.
  */
-public class AbstractBaseTestCase<T> extends TestCase{
-  private T bean;
-  private String beanName;
+public class AbstractMultiBeansTestCase extends TestCase{
+  private HashMap<String,Object> beans;
+  private String[] beanNames;
   private String configLocation;
   public static String DEFAULT_CONFIG_LOCATION="applicationContext.xml";
 
-  public AbstractBaseTestCase(String beanName,String configLocation) {
+  public AbstractMultiBeansTestCase(String configLocation,String... beanNames) {
     super();
-    this.beanName=beanName;
+    this.beanNames=beanNames;
+    beans=new HashMap<String,Object>();
     if (StringUtils.isEmpty(configLocation)){
       this.configLocation=DEFAULT_CONFIG_LOCATION;
     }
@@ -33,16 +36,20 @@ public class AbstractBaseTestCase<T> extends TestCase{
   public void setUp() throws Exception {
     super.setUp();
     ApplicationContext context=new ClassPathXmlApplicationContext(configLocation);
-    bean= (T) context.getBean(beanName);
+    for(String beanName:beanNames){
+      Object bean= context.getBean(beanName);
+      beans.put(beanName,bean);
+    }
   }
 
   @Override
   public void tearDown() throws Exception {
     super.tearDown();
-    bean=null;
+    beans=null;
+    beanNames=null;
   }
 
-  public T getBean() {
-    return bean;
+  public Object getBean(String beanName) {
+    return beans.get(beanName);
   }
 }

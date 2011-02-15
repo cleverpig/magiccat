@@ -1,12 +1,11 @@
 package org.magiccat.backingbean;
 
-import com.icefaces.model.datamodel.PaginationDataModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.magiccat.dao.OrderCondition;
 import org.magiccat.dao.QueryCondition;
-import org.magiccat.domain.Dic;
-import org.magiccat.service.DicService;
+import org.magiccat.domain.dic.ColumnDic;
+import org.magiccat.service.ColumnDicService;
 import org.magiccat.util.BeanHelper;
 import org.magiccat.util.BooleanSelectItems;
 import org.magiccat.util.MessageHelper;
@@ -27,13 +26,12 @@ import java.util.List;
  * Time: 下午3:17
  * To change this template use File | Settings | File Templates.
  */
-public class DicBean extends SortableBean implements QueryableBean{
-  private DicService dicService;
-  private String catType;
-  private DicDataModel listData;
+public class ColumnDicBean extends SortableBean implements QueryableBean{
+  private ColumnDicService service;
+  private SingleDAOServiceDataModel listData;
   private int pageSize;
-  private Log log= LogFactory.getLog(DicBean.class);
-  private Dic dic;
+  private Log log= LogFactory.getLog(ColumnDicBean.class);
+  private ColumnDic dic;
   private Integer id;
   private Boolean showEdit;
   private Boolean showList;
@@ -42,7 +40,7 @@ public class DicBean extends SortableBean implements QueryableBean{
   private List<SelectItem> enableOptions;
   private final String FORM_ID="form";
 
-  public DicBean() {
+  public ColumnDicBean() {
     super("entryId");
     showEdit=false;
     showList=true;
@@ -50,27 +48,11 @@ public class DicBean extends SortableBean implements QueryableBean{
     enableOptions=BooleanSelectItems.OPTIONS;
   }
 
-  public String getCatType() {
-    return catType;
-  }
-
-  public void setCatType(String catType) {
-    this.catType = catType;
-  }
-
-  public DicService getDicService() {
-    return dicService;
-  }
-
-  public void setDicService(DicService dicService) {
-    this.dicService = dicService;
-  }
-
-  public DicDataModel getListData() {
+  public SingleDAOServiceDataModel getListData() {
     return listData;
   }
 
-  public void setListData(DicDataModel listData) {
+  public void setListData(SingleDAOServiceDataModel listData) {
     this.listData = listData;
   }
 
@@ -82,11 +64,19 @@ public class DicBean extends SortableBean implements QueryableBean{
     this.pageSize = pageSize;
   }
 
-  public Dic getDic() {
+  public ColumnDicService getService() {
+    return service;
+  }
+
+  public void setService(ColumnDicService service) {
+    this.service = service;
+  }
+
+  public ColumnDic getDic() {
     return dic;
   }
 
-  public void setDic(Dic dic) {
+  public void setDic(ColumnDic dic) {
     this.dic = dic;
   }
 
@@ -133,7 +123,6 @@ public class DicBean extends SortableBean implements QueryableBean{
   @Override
   public List<QueryCondition> constructQueryConditions(){
     List<QueryCondition> queryConditions = new ArrayList<QueryCondition>();
-    queryConditions.add(new QueryCondition("catTypes",catType,QueryCondition.EQ_OP,QueryCondition.AND_RELATION));
     QueryCondition queryEntryValCondition= QueryHelper.constructLikeCondition("entryVal", queryEntryVal, QueryCondition.AND_RELATION);
     log.debug("remarkListDataIsDirty...queryEntryVal="+queryEntryVal);
     if (queryEntryValCondition!=null){
@@ -161,8 +150,8 @@ public class DicBean extends SortableBean implements QueryableBean{
   public void loadDicData(){
     log.debug("loadDicData...");
     if (listData==null){
-      listData=new DicDataModel(
-          dicService,pageSize,
+      listData=new SingleDAOServiceDataModel(
+          service,pageSize,
           constructQueryConditions(),
           constructOrderConditions());
     }
@@ -170,7 +159,7 @@ public class DicBean extends SortableBean implements QueryableBean{
 
   private boolean loadDicById(ActionEvent event,String paramName){
     UIParameter param= (UIParameter) event.getComponent().findComponent(paramName);
-    dic=dicService.loadDic((Integer) param.getValue());
+    dic= service.loadById((Integer) param.getValue());
     if (dic!=null){
       return true;
     }
@@ -202,9 +191,9 @@ public class DicBean extends SortableBean implements QueryableBean{
   public void saveActionHandler(ActionEvent event){
     //update
     if (dic!=null && dic.getId()!=null && dic.getId()>0){
-      Dic oldDic=dicService.loadDic(dic.getId());
+      ColumnDic oldDic= service.loadById(dic.getId());
       if (oldDic.getEntryId().equals(dic.getEntryId())==false){//user had modified entryId!
-        if (dicService.isRecordExist(catType,dic.getEntryId())){//this modified entryId has been existed!
+        if (service.isRecordExist(dic.getEntryId())){//this modified entryId has been existed!
           BeanHelper.addMessageToContext(FORM_ID,
               MessageHelper.constructFacesMessageFromBundle(
                   MessageHelper.VALIDATE_RESOURCE_BUNDLE,MessageHelper.MESSAGE_TYPE.DATA_EXSIT
@@ -213,23 +202,23 @@ public class DicBean extends SortableBean implements QueryableBean{
           return;
         }
         else{//user's entryId didn't exist!
-          dicService.updateDic(dic);
+          service.update(dic);
           returnToList();
           notifyDataModelChange();
         }
       }
       else{//user hadn't modified entryId
-        dicService.updateDic(dic);
+        service.update(dic);
         returnToList();
         notifyDataModelChange();
       }
 
     }
     else{
-      //save
+      //saveNew
       if (dic!=null){
-        if (dicService.isRecordExist(catType,dic.getEntryId())==false){
-          dicService.saveNewDic(dic);
+        if (service.isRecordExist(dic.getEntryId())==false){
+          service.saveNew(dic);
           returnToList();
           notifyDataModelChange();
         }
@@ -263,7 +252,7 @@ public class DicBean extends SortableBean implements QueryableBean{
   }
 
   public void newActionHandler(ActionEvent event){
-    dic=new Dic();
+    dic=new ColumnDic();
     showEdit=true;
     showDetail=false;
     showList=false;
@@ -271,7 +260,7 @@ public class DicBean extends SortableBean implements QueryableBean{
 
   public void delActionHandler(ActionEvent event){
     UIParameter param= (UIParameter) event.getComponent().findComponent("id");
-    dicService.deleteDic((Integer)param.getValue());
+    service.deleteById((Integer) param.getValue());
     notifyDataModelChange();
   }
 
@@ -284,12 +273,4 @@ public class DicBean extends SortableBean implements QueryableBean{
   }
 
 }
-class DicDataModel extends PaginationDataModel<Dic> {
 
-  public DicDataModel(
-      DicService dicService, int rowsPerPage,
-      List<QueryCondition> queryConditions,
-      List<OrderCondition> orderConditions) {
-    super(dicService,rowsPerPage,queryConditions,orderConditions);
-  }
-}

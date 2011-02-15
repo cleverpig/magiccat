@@ -1,55 +1,54 @@
 /*
-Navicat MySQL Data Transfer
-
-Source Server         : magiccat@localhost
-Source Server Version : 50141
-Source Host           : localhost:3306
-Source Database       : magiccat
-
-Target Server Type    : MYSQL
-Target Server Version : 50141
-File Encoding         : 65001
-
-Date: 2011-02-06 16:27:57
+MySQL Data Transfer
+Source Host: localhost
+Source Database: magiccat
+Target Host: localhost
+Target Database: magiccat
+Date: 2011-2-15 17:33:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
--- Table structure for `article`
+-- Table structure for article
 -- ----------------------------
-DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL auto_increment,
   `author` varchar(20) NOT NULL,
   `content` longtext NOT NULL,
-  `modifyDate` datetime DEFAULT NULL,
+  `modifyDate` datetime default NULL,
   `publishDate` datetime NOT NULL,
   `title` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `columnId` int(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `FKD458CCF68F6C3F3A` (`columnId`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of article
+-- Table structure for dic
 -- ----------------------------
-INSERT INTO article VALUES ('1', 'cleverpig', 'new content', null, '2011-01-31 16:11:13', 'new title');
-INSERT INTO article VALUES ('2', '', 'aaaa', null, '2011-01-31 22:29:52', 'aaa');
-
--- ----------------------------
--- Table structure for `dic`
--- ----------------------------
-DROP TABLE IF EXISTS `dic`;
 CREATE TABLE `dic` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `catTypes` varchar(4) NOT NULL,
+  `id` int(11) NOT NULL auto_increment,
   `entryId` varchar(4) NOT NULL,
   `entryOrder` varchar(2) NOT NULL,
   `entryVal` varchar(50) NOT NULL,
   `isEnabled` bit(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `catType` varchar(31) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of dic
+-- Records 
 -- ----------------------------
-INSERT INTO dic VALUES ('1', '01', '01', '01', '栏目01', '');
-INSERT INTO dic VALUES ('2', '01', '02', '02', '栏目02', '');
+INSERT INTO `article` VALUES ('1', 'cleverpig', 'new content', null, '2011-01-31 16:11:13', 'new title', null);
+INSERT INTO `article` VALUES ('2', '', 'aaaa', null, '2011-01-31 22:29:52', 'aaa', null);
+INSERT INTO `article` VALUES ('3', 'cleverpig', 'new content', null, '2011-02-12 11:30:38', 'new title', null);
+INSERT INTO `article` VALUES ('4', 'cleverpig', 'new content', null, '2011-02-15 17:22:11', 'new title', null);
+INSERT INTO `article` VALUES ('5', 'cleverpig', 'new content', null, '2011-02-15 17:27:17', 'new title', '1');
+INSERT INTO `article` VALUES ('6', 'cleverpig', 'new content', null, '2011-02-15 17:28:54', 'new title', '1');
+INSERT INTO `article` VALUES ('7', 'cleverpig', 'new content', null, '2011-02-15 17:29:12', 'new title', '1');
+INSERT INTO `dic` VALUES ('1', '01', '01', '栏目01', '', 'COLUMN');
+INSERT INTO `dic` VALUES ('2', '02', '02', '栏目02', '', 'COLUMN');
+INSERT INTO `dic` VALUES ('3', '03', '03', '栏目03', '', 'COLUMN');
+INSERT INTO `dic` VALUES ('4', '04', '04', '栏目04', '', 'COLUMN');
+INSERT INTO `dic` VALUES ('5', '05', '05', '栏目05', '', 'COLUMN');
+INSERT INTO `dic` VALUES ('6', '06', '06', '栏目06', '', 'COLUMN');

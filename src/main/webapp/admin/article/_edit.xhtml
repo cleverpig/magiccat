@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:b="http://bjinfotech.com/tags">
+<f:loadBundle var="msg" basename="org.magiccat.resourceBundle.Article"/>
+<f:loadBundle var="labels" basename="org.magiccat.resourceBundle.Labels"/>
+<ui:composition>
+  <ice:inputHidden id="author" value="#{articleBean.article.author}"/>
+  <ice:panelGrid columns="3">
+    <h:outputLabel value="#{msg['title']}" for="title"/>
+    <ice:inputText id="title" value="#{articleBean.article.title}"
+                   maxlength="50" size="20" required="true">
+      <f:validateLength minimum="1" maximum="50"/>
+    </ice:inputText>
+    <ice:message for="title"/>
+    <ice:outputLabel for="content" value="#{msg['content']}"/>
+    <b:kindeditor id="content"
+                  value="#{articleBean.article.content}"
+                  extConfigPath="/js/kindeditor-config.js"
+                  configProfile="basic_edit">
+      <f:validateLength minimum="1" maximum="5000"/>
+    </b:kindeditor>
+    <ice:message for="content"/>
+  </ice:panelGrid>
+  <ice:panelGrid columns="1">
+    <ice:commandButton value="#{lables['save']}" actionListener="#{articleBean.saveActionListener}"/>
+  </ice:panelGrid>
+</ui:composition>
+</html>

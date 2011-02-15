@@ -1,8 +1,9 @@
 package org.magiccat.domain;
 
-import org.springframework.security.core.userdetails.User;
+import org.magiccat.domain.dic.ColumnDic;
+
 import javax.persistence.*;
-import java.sql.Clob;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,9 +13,10 @@ import java.util.Date;
  * Time: 下午1:51
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings({"JpaAttributeTypeInspection", "JpaDataSourceORMInspection"})
 @Entity(name="article")
 @Table
-public class Article {
+public class Article implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
@@ -35,6 +37,10 @@ public class Article {
 
   @Column(nullable = false,length = 20)
   private String author;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name="columnId")
+  private ColumnDic column;
 
   public Integer getId() {
     return id;
@@ -82,6 +88,14 @@ public class Article {
 
   public void setAuthor(String author) {
     this.author = author;
+  }
+
+  public ColumnDic getColumn() {
+    return column;
+  }
+
+  public void setColumn(ColumnDic column) {
+    this.column = column;
   }
 
   @Override

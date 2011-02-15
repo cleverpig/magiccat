@@ -1,6 +1,7 @@
-package org.magiccat.domain;
+package org.magiccat.domain.dic;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -9,14 +10,15 @@ import javax.persistence.*;
  * Time: 下午3:08
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings({"JpaDataSourceORMInspection"})
 @Entity(name="dic")
 @Table
-public class Dic {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="catType",discriminatorType=DiscriminatorType.STRING)
+public abstract class Dic implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-  @Column(length = 4,nullable = false)
-  private String catTypes;
   @Column(length = 4,nullable = false)
   private String entryId;//entry Id
   @Column(length = 50,nullable = false)
@@ -32,14 +34,6 @@ public class Dic {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public String getCatTypes() {
-    return catTypes;
-  }
-
-  public void setCatTypes(String catTypes) {
-    this.catTypes = catTypes;
   }
 
   public String getEntryId() {
@@ -81,16 +75,18 @@ public class Dic {
 
     Dic dic = (Dic) o;
 
-    if (catTypes != null ? !catTypes.equals(dic.catTypes) : dic.catTypes != null) return false;
     if (entryId != null ? !entryId.equals(dic.entryId) : dic.entryId != null) return false;
+    if (entryVal != null ? !entryVal.equals(dic.entryVal) : dic.entryVal != null) return false;
+    if (isEnabled != null ? !isEnabled.equals(dic.isEnabled) : dic.isEnabled != null) return false;
 
     return true;
   }
 
   @Override
   public int hashCode() {
-    int result = catTypes != null ? catTypes.hashCode() : 0;
-    result = 31 * result + (entryId != null ? entryId.hashCode() : 0);
+    int result = entryId != null ? entryId.hashCode() : 0;
+    result = 31 * result + (entryVal != null ? entryVal.hashCode() : 0);
+    result = 31 * result + (isEnabled != null ? isEnabled.hashCode() : 0);
     return result;
   }
 }

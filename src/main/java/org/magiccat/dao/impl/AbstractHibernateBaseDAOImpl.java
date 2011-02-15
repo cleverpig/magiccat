@@ -6,7 +6,6 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
 import org.magiccat.dao.AbstractHibernateBaseDAO;
 import org.magiccat.dao.OrderCondition;
 import org.magiccat.dao.QueryCondition;
@@ -44,7 +43,8 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
 
   @Override
   public void update(T entity){
-    getHibernateTemplate().update(entity);
+    getHibernateTemplate().merge(entity);
+//    getHibernateTemplate().update(entity);
   }
 
   @Override

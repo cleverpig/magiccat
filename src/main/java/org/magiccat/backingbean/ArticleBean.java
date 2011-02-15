@@ -4,7 +4,6 @@ import org.magiccat.domain.Article;
 import org.magiccat.service.ArticleService;
 
 import javax.faces.event.ActionEvent;
-import java.awt.print.Book;
 
 
 /**
@@ -57,7 +56,7 @@ public class ArticleBean {
   }
 
   public void saveActionListener(ActionEvent event){
-    articleService.saveNewArticle(article);
+    articleService.saveNew(article);
 
   }
 }

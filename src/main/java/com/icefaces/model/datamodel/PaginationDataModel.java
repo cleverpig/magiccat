@@ -1,11 +1,7 @@
 package com.icefaces.model.datamodel;
 
-import com.icefaces.model.datamodel.LazyDataModel;
-import org.hibernate.criterion.Order;
 import org.magiccat.dao.OrderCondition;
 import org.magiccat.dao.QueryCondition;
-import org.magiccat.domain.Dic;
-import org.magiccat.service.DicService;
 import org.magiccat.service.PaginationService;
 
 import java.util.ArrayList;

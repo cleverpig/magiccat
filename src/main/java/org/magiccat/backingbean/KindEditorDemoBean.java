@@ -15,10 +15,10 @@ import javax.faces.event.ActionEvent;
  * Time: 下午2:54
  * To change this template use File | Settings | File Templates.
  */
-public class KindEditorDemo {
+public class KindEditorDemoBean {
   private String editContent;
   private String htmlContent;
-  private Log log= LogFactory.getLog(KindEditorDemo.class);
+  private Log log= LogFactory.getLog(KindEditorDemoBean.class);
 
   public String getHtmlContent() {
     return htmlContent;

@@ -10,6 +10,7 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
 
     <mapping class="org.magiccat.domain.Article"/>
-    <mapping class="org.magiccat.domain.Dic"/>
+    <mapping class="org.magiccat.domain.dic.Dic"/>
+    <mapping class="org.magiccat.domain.dic.ColumnDic"/>
   </session-factory>
 </hibernate-configuration>

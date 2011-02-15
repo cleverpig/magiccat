@@ -50,15 +50,11 @@
 
   <managed-bean>
     <managed-bean-name>columnDicBean</managed-bean-name>
-    <managed-bean-class>org.magiccat.backingbean.DicBean</managed-bean-class>
+    <managed-bean-class>org.magiccat.backingbean.ColumnDicBean</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
     <managed-property>
-      <property-name>catType</property-name>
-      <value>01</value>
-    </managed-property>
-    <managed-property>
-      <property-name>dicService</property-name>
-      <value>#{dicService}</value>
+      <property-name>service</property-name>
+      <value>#{columnDicService}</value>
     </managed-property>
     <managed-property>
       <property-name>pageSize</property-name>
@@ -68,7 +64,7 @@
 
   <managed-bean>
     <managed-bean-name>KEDemo</managed-bean-name>
-    <managed-bean-class>org.magiccat.backingbean.KindEditorDemo</managed-bean-class>
+    <managed-bean-class>org.magiccat.backingbean.KindEditorDemoBean</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
 </faces-config>
