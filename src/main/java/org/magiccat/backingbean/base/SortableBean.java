@@ -1,4 +1,4 @@
-package org.magiccat.backingbean;
+package org.magiccat.backingbean.base;
 
 /**
  * Created by IntelliJ IDEA.

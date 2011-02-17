@@ -16,7 +16,7 @@
     <property name="hibernateTemplate" ref="hibernateTemplate"/>
   </bean>
 
-  <bean id="articleDAO" class="org.magiccat.dao.impl.ArticleDAOImpl" parent="baseDAO"/>
+  <bean id="blogDAO" class="org.magiccat.dao.impl.BlogDAOImpl" parent="baseDAO"/>
 
   <bean id="columnDicDAO" class="org.magiccat.dao.impl.ColumnDicDAOImpl" parent="baseDAO"/>
 </beans>

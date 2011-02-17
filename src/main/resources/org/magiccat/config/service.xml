@@ -2,8 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-  <bean id="articleService" class="org.magiccat.service.impl.ArticleServiceImpl">
-    <property name="dao" ref="articleDAO"/>
+  <bean id="blogService" class="org.magiccat.service.impl.BlogServiceImpl">
+    <property name="dao" ref="blogDAO"/>
   </bean>
 
   <bean id="columnDicService" class="org.magiccat.service.impl.ColumnDicServiceImpl">

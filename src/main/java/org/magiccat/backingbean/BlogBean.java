@@ -1,7 +1,7 @@
 package org.magiccat.backingbean;
 
-import org.magiccat.domain.Article;
-import org.magiccat.service.ArticleService;
+import org.magiccat.domain.Blog;
+import org.magiccat.service.BlogService;
 
 import javax.faces.event.ActionEvent;
 
@@ -13,30 +13,30 @@ import javax.faces.event.ActionEvent;
  * Time: 下午8:08
  * To change this template use File | Settings | File Templates.
  */
-public class ArticleBean {
-  private ArticleService articleService;
-  private Article article;
+public class BlogBean {
+  private BlogService blogService;
+  private Blog blog;
   private Boolean showEditor;
   private Boolean showQuery;
 
-  public ArticleBean() {
-    article=new Article();
+  public BlogBean() {
+    blog =new Blog();
   }
 
-  public ArticleService getArticleService() {
-    return articleService;
+  public BlogService getBlogService() {
+    return blogService;
   }
 
-  public void setArticleService(ArticleService articleService) {
-    this.articleService = articleService;
+  public void setBlogService(BlogService blogService) {
+    this.blogService = blogService;
   }
 
-  public Article getArticle() {
-    return article;
+  public Blog getBlog() {
+    return blog;
   }
 
-  public void setArticle(Article article) {
-    this.article = article;
+  public void setBlog(Blog blog) {
+    this.blog = blog;
   }
 
   public Boolean getShowEditor() {
@@ -56,7 +56,7 @@ public class ArticleBean {
   }
 
   public void saveActionListener(ActionEvent event){
-    articleService.saveNew(article);
+    blogService.saveNew(blog);
 
   }
 }

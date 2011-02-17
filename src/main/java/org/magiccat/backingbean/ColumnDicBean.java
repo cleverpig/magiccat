@@ -1,7 +1,9 @@
 package org.magiccat.backingbean;
 
+import com.icefaces.model.datamodel.SingleDAOServiceDataModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.magiccat.backingbean.base.OnePageOneAppBean;
 import org.magiccat.dao.OrderCondition;
 import org.magiccat.dao.QueryCondition;
 import org.magiccat.domain.dic.ColumnDic;
@@ -26,25 +28,18 @@ import java.util.List;
  * Time: 下午3:17
  * To change this template use File | Settings | File Templates.
  */
-public class ColumnDicBean extends SortableBean implements QueryableBean{
+public class ColumnDicBean extends OnePageOneAppBean {
   private ColumnDicService service;
   private SingleDAOServiceDataModel listData;
-  private int pageSize;
+
   private Log log= LogFactory.getLog(ColumnDicBean.class);
   private ColumnDic dic;
-  private Integer id;
-  private Boolean showEdit;
-  private Boolean showList;
-  private Boolean showDetail;
   private String queryEntryVal;
   private List<SelectItem> enableOptions;
   private final String FORM_ID="form";
 
   public ColumnDicBean() {
     super("entryId");
-    showEdit=false;
-    showList=true;
-    showDetail=false;
     enableOptions=BooleanSelectItems.OPTIONS;
   }
 
@@ -56,13 +51,6 @@ public class ColumnDicBean extends SortableBean implements QueryableBean{
     this.listData = listData;
   }
 
-  public int getPageSize() {
-    return pageSize;
-  }
-
-  public void setPageSize(int pageSize) {
-    this.pageSize = pageSize;
-  }
 
   public ColumnDicService getService() {
     return service;
@@ -78,30 +66,6 @@ public class ColumnDicBean extends SortableBean implements QueryableBean{
 
   public void setDic(ColumnDic dic) {
     this.dic = dic;
-  }
-
-  public Boolean getShowEdit() {
-    return showEdit;
-  }
-
-  public void setShowEdit(Boolean showEdit) {
-    this.showEdit = showEdit;
-  }
-
-  public Boolean getShowList() {
-    return showList;
-  }
-
-  public void setShowList(Boolean showList) {
-    this.showList = showList;
-  }
-
-  public Boolean getShowDetail() {
-    return showDetail;
-  }
-
-  public void setShowDetail(Boolean showDetail) {
-    this.showDetail = showDetail;
   }
 
   public List<SelectItem> getEnableOptions() {
@@ -147,11 +111,11 @@ public class ColumnDicBean extends SortableBean implements QueryableBean{
   }
 
   @PostConstruct
-  public void loadDicData(){
-    log.debug("loadDicData...");
+  public void loadData(){
+    log.debug("loadData...");
     if (listData==null){
       listData=new SingleDAOServiceDataModel(
-          service,pageSize,
+          service,getPageSize(),
           constructQueryConditions(),
           constructOrderConditions());
     }
@@ -174,17 +138,13 @@ public class ColumnDicBean extends SortableBean implements QueryableBean{
 
   public void showActionHandler(ActionEvent event){
     if (loadDicById(event,"id")){
-      showList=false;
-      showEdit=false;
-      showDetail=true;
+      switchToShowDetail();
     }
   }
 
   public void editActionHandler(ActionEvent event){
     if (loadDicById(event,"id")){
-      showEdit=true;
-      showList=false;
-      showDetail=false;
+      switchToShowEditor();
     }
   }
 
@@ -242,9 +202,7 @@ public class ColumnDicBean extends SortableBean implements QueryableBean{
 
   private void returnToList(){
     dic=null;
-    showEdit=false;
-    showDetail=false;
-    showList=true;
+   switchToShowList();
   }
 
   public void returnActionHandler(ActionEvent event){
@@ -253,9 +211,7 @@ public class ColumnDicBean extends SortableBean implements QueryableBean{
 
   public void newActionHandler(ActionEvent event){
     dic=new ColumnDic();
-    showEdit=true;
-    showDetail=false;
-    showList=false;
+    switchToShowEditor();
   }
 
   public void delActionHandler(ActionEvent event){

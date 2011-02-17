@@ -2,11 +2,11 @@ package org.magiccat.service.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.magiccat.dao.ArticleDAO;
+import org.magiccat.dao.BlogDAO;
 import org.magiccat.dao.OrderCondition;
 import org.magiccat.dao.QueryCondition;
-import org.magiccat.domain.Article;
-import org.magiccat.service.ArticleService;
+import org.magiccat.domain.Blog;
+import org.magiccat.service.BlogService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,30 +18,30 @@ import java.util.List;
  * Time: 上午11:13
  * To change this template use File | Settings | File Templates.
  */
-public class ArticleServiceImpl extends AbstractSingleDAOService<ArticleDAO,Article,Integer> implements ArticleService{
+public class BlogServiceImpl extends AbstractSingleDAOService<BlogDAO,Blog,Integer> implements BlogService {
 
-  private Log log= LogFactory.getLog(ArticleServiceImpl.class);
+  private Log log= LogFactory.getLog(BlogServiceImpl.class);
 
   @Override
-  public void saveNew(Article article)
+  public void saveNew(Blog blog)
   {
-    dao.save(article);
+    dao.save(blog);
   }
 
   @Override
-  public void update(Article article) {
-    dao.update(article);
+  public void update(Blog blog) {
+    dao.update(blog);
   }
 
   @Override
   public void deleteById(Integer id) {
-    Article article=dao.load(id);
-    if (article!=null)
-      dao.delete(article);
+    Blog blog =dao.load(id);
+    if (blog !=null)
+      dao.delete(blog);
   }
 
   @Override
-  public Article loadById(Integer id) {
+  public Blog loadById(Integer id) {
     return dao.load(id);
   }
 
@@ -63,7 +63,7 @@ public class ArticleServiceImpl extends AbstractSingleDAOService<ArticleDAO,Arti
   }
 
   @Override
-  public List<Article> queryPagedResult(
+  public List<Blog> queryPagedResult(
       List<QueryCondition> queryConditions, List<OrderCondition> orderConditions,
       int startRow,int pageSize) {
     return dao.queryPagedResult(queryConditions,orderConditions,startRow,pageSize);

@@ -9,8 +9,15 @@
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
 
-    <mapping class="org.magiccat.domain.Article"/>
     <mapping class="org.magiccat.domain.dic.Dic"/>
     <mapping class="org.magiccat.domain.dic.ColumnDic"/>
+    <mapping class="org.magiccat.domain.Content"/>
+    <mapping class="org.magiccat.domain.Comment"/>
+    <mapping class="org.magiccat.domain.Blog"/>
+    <mapping class="org.magiccat.domain.BlogComment"/>
+    <mapping class="org.magiccat.domain.Event"/>
+    <mapping class="org.magiccat.domain.EventComment"/>
+    <mapping class="org.magiccat.domain.Participator"/>
+
   </session-factory>
 </hibernate-configuration>

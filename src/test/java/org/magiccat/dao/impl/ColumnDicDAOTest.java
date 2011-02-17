@@ -20,7 +20,7 @@ public class ColumnDicDAOTest extends AbstractSingleBeanTestCase<ColumnDicDAO> {
   public void testSaveNew() throws Exception {
     ColumnDicDAO dao=getBean();
     ColumnDic columnDic=new ColumnDic();
-    columnDic.setArticles(null);
+    columnDic.setContents(null);
     columnDic.setEnabled(true);
     columnDic.setEntryId("01");
     columnDic.setEntryOrder("01");

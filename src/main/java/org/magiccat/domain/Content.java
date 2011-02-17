@@ -1,5 +1,6 @@
 package org.magiccat.domain;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.magiccat.domain.dic.ColumnDic;
 
 import javax.persistence.*;
@@ -9,17 +10,18 @@ import java.util.Date;
 /**
  * Created by IntelliJ IDEA.
  * User: cleverpig
- * Date: 11-1-31
- * Time: 下午1:51
+ * Date: 11-2-17
+ * Time: 下午1:25
  * To change this template use File | Settings | File Templates.
  */
-@SuppressWarnings({"JpaAttributeTypeInspection", "JpaDataSourceORMInspection"})
-@Entity(name="article")
-@Table
-public class Article implements Serializable{
+@SuppressWarnings({"ALL"})
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Content implements Serializable {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
+  @GeneratedValue(generator = "idGen")
+  @GenericGenerator(name = "idGen", strategy = "increment")
+  private Integer id;//note:at here,GenerationType.AUTO or GenerationType.Identify weren't permitted,reference: http://stackoverflow.com/questions/916169/cannot-use-identity-column-key-generation-with-union-subclass-table-per-class
 
   @Column(nullable = false,length = 200)
   private String title;
@@ -38,7 +40,7 @@ public class Article implements Serializable{
   @Column(nullable = false,length = 20)
   private String author;
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="columnId")
   private ColumnDic column;
 
@@ -101,12 +103,12 @@ public class Article implements Serializable{
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof Article)) return false;
+    if (!(o instanceof Content)) return false;
 
-    Article article = (Article) o;
+    Content content = (Content) o;
 
-    if (publishDate != null ? !publishDate.equals(article.publishDate) : article.publishDate != null) return false;
-    if (title != null ? !title.equals(article.title) : article.title != null) return false;
+    if (publishDate != null ? !publishDate.equals(content.publishDate) : content.publishDate != null) return false;
+    if (title != null ? !title.equals(content.title) : content.title != null) return false;
 
     return true;
   }
@@ -117,4 +119,5 @@ public class Article implements Serializable{
     result = 31 * result + (publishDate != null ? publishDate.hashCode() : 0);
     return result;
   }
+
 }

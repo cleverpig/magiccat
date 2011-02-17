@@ -1,7 +1,7 @@
 package org.magiccat.service;
 
-import org.magiccat.dao.ArticleDAO;
-import org.magiccat.domain.Article;
+import org.magiccat.dao.BlogDAO;
+import org.magiccat.domain.Blog;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,5 +10,5 @@ import org.magiccat.domain.Article;
  * Time: 上午11:12
  * To change this template use File | Settings | File Templates.
  */
-public interface ArticleService extends SingleDAOService<ArticleDAO,Article,Integer> {
+public interface BlogService extends SingleDAOService<BlogDAO,Blog,Integer> {
 }

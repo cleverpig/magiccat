@@ -1,6 +1,5 @@
-package org.magiccat.backingbean;
+package com.icefaces.model.datamodel;
 
-import com.icefaces.model.datamodel.PaginationDataModel;
 import org.magiccat.dao.OrderCondition;
 import org.magiccat.dao.QueryCondition;
 import org.magiccat.service.SingleDAOService;

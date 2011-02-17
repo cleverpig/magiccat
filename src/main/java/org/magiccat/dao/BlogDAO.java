@@ -1,8 +1,6 @@
 package org.magiccat.dao;
 
-import org.magiccat.domain.Article;
-
-import java.util.List;
+import org.magiccat.domain.Blog;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,5 +9,5 @@ import java.util.List;
  * Time: 下午2:17
  * To change this template use File | Settings | File Templates.
  */
-public interface ArticleDAO extends AbstractHibernateBaseDAO<Article,Integer>{
+public interface BlogDAO extends AbstractHibernateBaseDAO<Blog,Integer>{
 }

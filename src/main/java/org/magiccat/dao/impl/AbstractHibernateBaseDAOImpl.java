@@ -119,6 +119,7 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
 
   @Override
   public T load(ID id) {
+    log.info("load...entityClazz:"+entityClazz.getName());
     return getHibernateTemplate().load(entityClazz,id);
   }
 
@@ -227,6 +228,15 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
     List<OrderCondition> orderConditions=new ArrayList<OrderCondition>(1);
     orderConditions.add(orderCondition);
     return queryPagedResult(queryConditions,orderConditions,startRow,pageSize);
+  }
+
+  @Override
+  public T loadAndInitializeIt(ID id) {
+    Session session=getHibernateTemplate().getSessionFactory().openSession();
+    T entity= (T) session.load(entityClazz,id);
+    getHibernateTemplate().initialize(entity);
+    session.close();
+    return entity;
   }
 
 

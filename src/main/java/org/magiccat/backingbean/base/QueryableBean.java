@@ -1,4 +1,4 @@
-package org.magiccat.backingbean;
+package org.magiccat.backingbean.base;
 
 import org.magiccat.dao.OrderCondition;
 import org.magiccat.dao.QueryCondition;

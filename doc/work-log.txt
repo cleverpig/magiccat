@@ -1,7 +1,7 @@
 2011-01-31
 create project structure and config pom.xml
 config applcationContext & hibernate;build magiccat mysql database,Article domain,and related DAO classes.
-add ArticleService implement;config spring transaction;add admin/article/index.xhtml,and backingbean which using ArticleService.
+add ArticleService implement;config spring transaction;add admin/blog/index.xhtml,and backingbean which using ArticleService.
 
 2011-02-06
 add Dictionary domain(Dic.java) and related DAO,Service.
@@ -55,3 +55,6 @@ add:
 
 2010-02-15
 refact:Dic domain and related DAOs,Services,Beans.let ColumnDic has a heritance from Dic.
+
+2010-02-16
+remove article domain object.create blog,blogComment,event,eventComment,participator domain object and dataTable.

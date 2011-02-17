@@ -1,5 +1,7 @@
 package org.magiccat.dao;
 
+import org.hibernate.SessionFactory;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -53,4 +55,14 @@ public interface AbstractHibernateBaseDAO<T,ID extends Serializable> {
       List<QueryCondition> queryConditions,
       OrderCondition orderCondition,
       int startRow,int pageSize);
+
+  SessionFactory getSessionFactory();
+
+  /**
+   * load object and then call hibernate to initialize this object to avoid lazy load problem.
+   * sometime,this function was used for DAO test,since spring can resolve this problem with opensessionView..
+   * @param id
+   * @return
+   */
+  T loadAndInitializeIt(ID id);
 }

@@ -31,12 +31,12 @@
 
   <!-- backingBean直接可以调用spring IoC的Bean -->
   <managed-bean>
-    <managed-bean-name>articleBean</managed-bean-name>
-    <managed-bean-class>org.magiccat.backingbean.ArticleBean</managed-bean-class>
+    <managed-bean-name>blogBean</managed-bean-name>
+    <managed-bean-class>org.magiccat.backingbean.BlogBean</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
     <managed-property>
-      <property-name>articleService</property-name>
-      <value>#{articleService}</value>
+      <property-name>blogService</property-name>
+      <value>#{blogService}</value>
     </managed-property>
     <managed-property>
       <property-name>showEditor</property-name>

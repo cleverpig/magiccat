@@ -11,8 +11,8 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 @SuppressWarnings({"JpaDataSourceORMInspection"})
-@Entity(name="dic")
-@Table
+@Entity
+@Table(name="dic")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="catType",discriminatorType=DiscriminatorType.STRING)
 public abstract class Dic implements Serializable{

@@ -1,9 +1,11 @@
 package org.magiccat.domain.dic;
 
-import org.magiccat.domain.Article;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.magiccat.domain.Content;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,6 +14,7 @@ import java.util.List;
  * Time: 下午4:15
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings({"ALL"})
 @Entity
 @DiscriminatorValue("COLUMN")
 public class ColumnDic extends Dic{
@@ -20,13 +23,14 @@ public class ColumnDic extends Dic{
       fetch = FetchType.LAZY,
       mappedBy = "column"
   )
-  private List<Article> articles;
+  @OnDelete(action = OnDeleteAction.NO_ACTION)
+  private Set<Content> contents;
 
-  public List<Article> getArticles() {
-    return articles;
+  public Set<Content> getContents() {
+    return contents;
   }
 
-  public void setArticles(List<Article> articles) {
-    this.articles = articles;
+  public void setContents(Set<Content> contents) {
+    this.contents = contents;
   }
 }
