@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
+import org.hibernate.NonUniqueResultException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.magiccat.dao.AbstractHibernateBaseDAO;
@@ -51,6 +52,14 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
   public void delete(T entity){
     getHibernateTemplate().delete(entity);
   }
+
+  @Override
+  public void deleteById(ID id){
+    T entity=load(id);
+    if (entity!=null)
+      getHibernateTemplate().delete(entity);
+  }
+
 
   protected void appendOrderSQL(
       StringBuffer hsql,
@@ -237,6 +246,20 @@ public class AbstractHibernateBaseDAOImpl<T,ID extends Serializable>
     getHibernateTemplate().initialize(entity);
     session.close();
     return entity;
+  }
+
+  @Override
+  public T loadByExample(T example) {
+    List<T> result=getHibernateTemplate().findByExample(example);
+    if (result!=null && result.size()==1){
+      return result.get(0);
+    }
+    else{
+      if (result==null)
+        return null;
+      else
+        throw new NonUniqueResultException(result.size());
+    }
   }
 
 

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<f:loadBundle var="msg" basename="org.magiccat.resourceBundle.Blog"/>
+<head>
+  <title></title>
+  <ice:outputStyle href="/xmlhttp/css/rime/rime.css"></ice:outputStyle>
+</head>
+<body>
+<ice:form id="form" partialSubmit="true">
+  <ice:messages showSummary="true" showDetail="true" />
+  <ice:panelGrid id="listGrid" columns="1" border="1" rendered="#{blogBean.showList}">
+    <ice:panelGroup>
+      <ice:panelGrid columns="3">
+        <ice:outputLabel for="queryTitle" value="#{msg['query.title']}"/>
+        <ice:inputText id="queryTitle" value="#{blogBean.queryTitle}"/>
+        <ice:commandButton value="#{labels['query']}" actionListener="#{blogBean.queryActionHandler}"/>
+      </ice:panelGrid>
+    </ice:panelGroup>
+    <ice:panelGroup>
+      <ice:dataTable id="columnList"
+                     rows="4"
+                     value="#{blogBean.listData}"
+                     sortColumn="#{blogBean.sortColumnName}"
+                     sortAscending="#{blogBean.sortAscending}"
+                     var="item"
+                     varStatus="status">
+        <h:column>
+          <f:facet name="header">
+            <ice:outputText value="#{labels['listIndex']}"/>
+          </f:facet>
+          <ice:outputText value="#{status.index+1}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <ice:commandSortHeader columnName="title" arrow="true">
+              <ice:outputText value="#{msg['title']}"/>
+            </ice:commandSortHeader>
+          </f:facet>
+          #{item.title}
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <ice:commandSortHeader columnName="publishDate" arrow="true">
+              <ice:outputText value="#{msg['publishDate']}"/>
+            </ice:commandSortHeader>
+          </f:facet>
+          <ice:outputText value="#{item.publishDate}">
+            <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="GMT+8"/>
+          </ice:outputText>
+          <!--<ice:commandLink value="#{item.entryVal}" actionListener="#{blogBean.showActionHandler}">-->
+            <!--<f:param id="id" name="id" value="#{item.id}"/>-->
+          <!--</ice:commandLink>-->
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <ice:outputText value="#{labels['opItem']}"/>
+          </f:facet>
+          <!--<ice:commandButton value="#{labels['edit']}" actionListener="#{blogBean.editActionHandler}">-->
+            <!--<f:param id="id" name="id" value="#{item.id}"/>-->
+          <!--</ice:commandButton>-->
+          <!--<ice:commandLink value="#{labels['delete']}"-->
+                           <!--actionListener="#{blogBean.delActionHandler}"-->
+                           <!--panelConfirmation="confirmDeletion"-->
+                  <!-->-->
+            <!--<f:param id="id" name="id" value="#{item.id}"/>-->
+          <!--</ice:commandLink>-->
+          <!--<ice:panelConfirmation id="confirmDeletion"-->
+                                 <!--acceptLabel="#{labels['yes']}"-->
+                                 <!--cancelLabel="#{labels['no']}"-->
+                                 <!--message="#{labels['deleteConfirmMessages']}"-->
+                                 <!--title="#{labels['deleteConfirmTitle']}"-->
+                                 <!--draggable="false"-->
+                  <!--/>-->
+        </h:column>
+      </ice:dataTable>
+    </ice:panelGroup>
+
+    <ice:panelGroup>
+      <ui:include src="/includes/_paginator.xhtml">
+        <ui:param name="tableId" value="columnList"/>
+      </ui:include>
+    </ice:panelGroup>
+
+    <!--<ice:panelGroup>-->
+      <!--<ice:commandButton value="#{labels['new']}" actionListener="#{blogBean.newActionHandler}"/>-->
+    <!--</ice:panelGroup>-->
+  </ice:panelGrid>
+
+  <!--<ice:panelGrid id="editGrid" columns="1" border="1" rendered="#{blogBean.showEdit}">-->
+    <!--<ui:include src="_edit.xhtml">-->
+      <!--<ui:param name="blogBean" value="#{blogBean}"/>-->
+    <!--</ui:include>-->
+  <!--</ice:panelGrid>-->
+
+  <!--<ice:panelGrid id="detailGrid" columns="1" border="1" rendered="#{blogBean.showDetail}">-->
+    <!--<ui:include src="_detail.xhtml">-->
+      <!--<ui:param name="blogBean" value="#{blogBean}"/>-->
+    <!--</ui:include>-->
+  <!--</ice:panelGrid>-->
+
+</ice:form>
+</body>
+</html>

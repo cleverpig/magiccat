@@ -17,7 +17,7 @@
     <mapping class="org.magiccat.domain.BlogComment"/>
     <mapping class="org.magiccat.domain.Event"/>
     <mapping class="org.magiccat.domain.EventComment"/>
-    <mapping class="org.magiccat.domain.Participator"/>
+    <mapping class="org.magiccat.domain.SiteUser"/>
 
   </session-factory>
 </hibernate-configuration>

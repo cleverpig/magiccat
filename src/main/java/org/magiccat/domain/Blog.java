@@ -25,11 +25,23 @@ public class Blog extends Content{
   @OnDelete(action = OnDeleteAction.CASCADE)
   private Set<BlogComment> comments;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "publisherId")
+  private SiteUser publisher;
+
   public Set<BlogComment> getComments() {
     return comments;
   }
 
   public void setComments(Set<BlogComment> comments) {
     this.comments = comments;
+  }
+
+  public SiteUser getPublisher() {
+    return publisher;
+  }
+
+  public void setPublisher(SiteUser publisher) {
+    this.publisher = publisher;
   }
 }

@@ -58,3 +58,6 @@ refact:Dic domain and related DAOs,Services,Beans.let ColumnDic has a heritance 
 
 2010-02-16
 remove article domain object.create blog,blogComment,event,eventComment,participator domain object and dataTable.
+
+2010-02-18
+refact domain object and add some DAO,service.

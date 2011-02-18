@@ -39,12 +39,12 @@
       <value>#{blogService}</value>
     </managed-property>
     <managed-property>
-      <property-name>showEditor</property-name>
-      <value>true</value>
+      <property-name>siteUserService</property-name>
+      <value>#{siteUserService}</value>
     </managed-property>
     <managed-property>
-      <property-name>showQuery</property-name>
-      <value>false</value>
+      <property-name>pageSize</property-name>
+      <value>4</value>
     </managed-property>
   </managed-bean>
 

@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class ColumnDicBean extends OnePageOneAppBean {
   private ColumnDicService service;
-  private SingleDAOServiceDataModel listData;
+  private SingleDAOServiceDataModel<ColumnDic> listData;
 
   private Log log= LogFactory.getLog(ColumnDicBean.class);
   private ColumnDic dic;

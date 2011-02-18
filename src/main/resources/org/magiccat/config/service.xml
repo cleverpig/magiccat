@@ -9,4 +9,8 @@
   <bean id="columnDicService" class="org.magiccat.service.impl.ColumnDicServiceImpl">
     <property name="dao" ref="columnDicDAO"/>
   </bean>
+
+  <bean id="siteUserService" class="org.magiccat.service.impl.SiteUserServiceImpl">
+    <property name="dao"  ref="siteUserDAO"/>
+  </bean>
 </beans>

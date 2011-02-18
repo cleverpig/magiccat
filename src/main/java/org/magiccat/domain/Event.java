@@ -26,13 +26,17 @@ public class Event extends Content{
   @OnDelete(action = OnDeleteAction.CASCADE)
   private List<EventComment> comments;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name="managerId")
+  private SiteUser manager;
+
   @ManyToMany
   @JoinTable(
-      name="event_participator",
-      joinColumns={@JoinColumn(name="event_id")},
-      inverseJoinColumns = {@JoinColumn(name="paricipator_id")}
+      name="event_paricipator",
+      joinColumns={@JoinColumn(name="eventId")},
+      inverseJoinColumns = {@JoinColumn(name="paricipatorId")}
   )
-  private Set<Participator> participators;
+  private Set<SiteUser> participators;
 
   public List<EventComment> getComments() {
     return comments;
@@ -42,11 +46,19 @@ public class Event extends Content{
     this.comments = comments;
   }
 
-  public Set<Participator> getParticipators() {
+  public SiteUser getManager() {
+    return manager;
+  }
+
+  public void setManager(SiteUser manager) {
+    this.manager = manager;
+  }
+
+  public Set<SiteUser> getParticipators() {
     return participators;
   }
 
-  public void setParticipators(Set<Participator> participators) {
+  public void setParticipators(Set<SiteUser> participators) {
     this.participators = participators;
   }
 }

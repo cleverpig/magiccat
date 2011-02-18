@@ -20,6 +20,8 @@ public interface AbstractHibernateBaseDAO<T,ID extends Serializable> {
 
   void delete(T entity);
 
+  void deleteById(ID id);
+
   List<T> list(String orderField, boolean orderByAsc);
 
   List<T> query(
@@ -65,4 +67,6 @@ public interface AbstractHibernateBaseDAO<T,ID extends Serializable> {
    * @return
    */
   T loadAndInitializeIt(ID id);
+
+  T loadByExample(T example);
 }

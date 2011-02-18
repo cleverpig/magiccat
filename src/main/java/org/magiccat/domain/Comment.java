@@ -13,6 +13,7 @@ import java.util.Date;
  * Time: 下午2:10
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings({"ALL"})
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Comment implements Serializable{
@@ -20,8 +21,7 @@ public abstract class Comment implements Serializable{
   @GeneratedValue(generator = "idGen")
   @GenericGenerator(name = "idGen",strategy = "increment")
   private Integer id;
-  @Column(nullable = false,length = 50)
-  private String userId;
+
   @Temporal(TemporalType.TIMESTAMP)
   private Date commentTime;
   @Column(nullable = false,length = 200)
@@ -35,13 +35,6 @@ public abstract class Comment implements Serializable{
     this.id = id;
   }
 
-  public String getUserId() {
-    return userId;
-  }
-
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
 
   public Date getCommentTime() {
     return commentTime;
@@ -67,15 +60,12 @@ public abstract class Comment implements Serializable{
     Comment comment = (Comment) o;
 
     if (commentTime != null ? !commentTime.equals(comment.commentTime) : comment.commentTime != null) return false;
-    if (userId != null ? !userId.equals(comment.userId) : comment.userId != null) return false;
 
     return true;
   }
 
   @Override
   public int hashCode() {
-    int result = userId != null ? userId.hashCode() : 0;
-    result = 31 * result + (commentTime != null ? commentTime.hashCode() : 0);
-    return result;
+    return commentTime != null ? commentTime.hashCode() : 0;
   }
 }

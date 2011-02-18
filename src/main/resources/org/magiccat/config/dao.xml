@@ -19,4 +19,6 @@
   <bean id="blogDAO" class="org.magiccat.dao.impl.BlogDAOImpl" parent="baseDAO"/>
 
   <bean id="columnDicDAO" class="org.magiccat.dao.impl.ColumnDicDAOImpl" parent="baseDAO"/>
+
+  <bean id="siteUserDAO" class="org.magiccat.dao.impl.SiteUserDAOImpl" parent="baseDAO"/>
 </beans>
